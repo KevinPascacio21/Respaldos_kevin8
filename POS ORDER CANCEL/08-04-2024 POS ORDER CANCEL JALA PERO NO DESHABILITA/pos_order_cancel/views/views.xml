@@ -1,0 +1,15 @@
+<!-- <?xml version="1.0" encoding="utf-8"?> -->
+<odoo>
+  <data>
+    <!-- <record model="ir.actions.server" id="action_cancel_validation_state">
+      <field name="name">CANCELAR ORDENN</field> 
+      <field name="type">ir.actions.server</field> 
+      <field name="model_id" ref="point_of_sale.model_pos_order"/> 
+      <field name="binding_model_id" ref="point_of_sale.model_pos_order"/>
+      <field name="state">code</field> 
+      <field name="code"/>  -->
+                    <!--Aqui va la funcion que se configura desde odoo, si es que se programa desde la app y no en codigo-->
+      <!-- </field>
+    </record> -->
+  </data>
+</odoo>

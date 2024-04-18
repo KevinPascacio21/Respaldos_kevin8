@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record model="ir.rule" id="route_config_multi_comp_rule">
+            <field name="name">Route Configuration multi-company</field>
+            <field name="model_id" ref="model_pos_route_config_route_config"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record model="ir.rule" id="route_config_multi_comp_rule_report">
+            <field name="name">Route Configuration multi-company</field> 
+            <field name="model_id" ref="model_pos_route_config_create_report"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="group_route_config_edit" model="res.groups">
+            <field name="name">Edit Route Configuration</field>
+        </record>
+
+        <record id="group_route_config" model="res.groups">
+            <field name="name">Route Configuration</field>
+        </record>
+        
+        <record id="group_route_config_edit_start_volume" model="res.groups">
+            <field name="name">Edit starting volume meter</field>
+        </record>
+
+        <record id="group_route_config_revert_route_state" model="res.groups">
+            <field name="name">Revert route config state</field>
+        </record>
+        
+        <record id="group_route_config_manual_gaspar_conciliate" model="res.groups">
+            <field name="name">Allow manual conciliation</field>
+        </record>
+
+        <record id="group_route_config_writing_weight" model="res.groups">
+            <field name="name">Allow write to scale</field>
+        </record>
+    </data>
+</odoo>

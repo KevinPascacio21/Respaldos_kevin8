@@ -1,0 +1,162 @@
+<odoo>
+  <data>
+    <!-- views -->
+    <record model="ir.ui.view" id="pos_route_config_route_config_list_view"> 
+      <field name="name">pos_route_config.route_config.list.view</field>
+      <field name="model">pos_route_config.route_config</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="Fecha de creación"/>
+          <field name="Referencia de ruta"/>
+          <field name="Punto de venta"/>
+          <field name="Litrometro inicial"/>
+          <field name="Litrometro final"/>
+          <field name="Dif. Litrometro"/>
+          <field name="Peso inicial"/>
+          <field name="Peso final"/>
+          <field name="Dif. Peso"/>
+          <field name="Porcentaje inicial"/>
+          <field name="Porcentaje final"/>
+          <field name="Dif. Porcentaje"/>
+          <field name="Promedio sector"/>
+          <field name="Promedio general"/>
+          <field name="Carburacion inicial"/>
+          <field name="Carburacion final"/>
+          <field name="Dif. Carburacion"/>
+          <field name="Rotagauge inicial"/>
+          <field name="Rotagauge final"/>
+          <field name="Litros a cobrar"/>
+          <field name="Litros para pagar"/>
+          <field name="Estatus"/>
+          <field name="Empleado"/>
+          <field name="Ayudante"/>
+          <field name="Justificacion"/>
+
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="pos_route_config_route_config_form_view"> 
+      <field name="name">pos_route_config.route_config.form.view</field>
+      <field name="model">pos_route_config.route_config</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="Fecha de creación"/>
+              <field name="Referencia de ruta"/>
+              <field name="Punto de venta"/>
+              <field name="Litrometro inicial"/>
+              <field name="Litrometro final"/>
+              <field name="Dif. Litrometro"/>
+              <field name="Peso inicial"/>
+              <field name="Peso final"/>
+              <field name="Dif. Peso"/>
+              <field name="Porcentaje inicial"/>
+              <field name="Porcentaje final"/>
+              <field name="Dif. Porcentaje"/>
+              <field name="Promedio sector"/>
+              <field name="Promedio general"/>
+              <field name="Carburacion inicial"/>
+              <field name="Carburacion final"/>
+              <field name="Dif. Carburacion"/>
+              <field name="Rotagauge inicial"/>
+              <field name="Rotagauge final"/>
+              <field name="Litros a cobrar"/>
+              <field name="Litros para pagar"/>
+              <field name="Estatus"/>
+              <field name="Empleado"/>
+              <field name="Ayudante"/>
+              <field name="Justificacion"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Report view -->
+    <record model="ir.ui.view" id="RC_report_report_form_view"> <!--kkkkkkkkkkkkkkkkkkkkkkkkkkk.-->
+      <field name="name">Reporte de ruta de configuración</field> 
+      <field name="model">pos_route_config.RC_report</field> 
+      <field name="arch" type="xml">
+        <form string="Sabana Control">
+          <sheet>
+            <div>
+              <h1>Reportes de configuracion de ruta</h1>
+            </div>
+            <group>
+              <group>
+                <field name="fecha_filtro"/>
+              </group>
+            </group>
+            <group>
+              <field name="relacion_ids">
+                <tree editable="top" delete='false' no_open="1"> 
+                  <field name="Fecha de creación" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Referencia de ruta" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Punto de venta" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Litrometro inicial" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Litrometro final" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Dif. Litrometro" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Peso inicial" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Peso final" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Dif. Peso" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Porcentaje inicial" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Porcentaje final" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Dif. Porcentaje" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Promedio sector" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Promedio general" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Carburacion inicial" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Carburacion final" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Dif. Carburacion" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Rotagauge inicial" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Rotagauge final" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Litros a cobrar" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Litros para pagar" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Estatus" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Empleado" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Ayudante" readonly="1" force_save="1" style="pointer-events:none"/>
+                  <field name="Justificacion" readonly="1" force_save="1" style="pointer-events:none"/>
+                </tree>
+              </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="pos_route_config_RC_report_list_view">
+      <field name="name">Reporte de configuración de ruta</field>
+      <field name="model">pos_route_config.RC_report</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="relacion_ids"/>
+          <!-- <field name="enero"/>
+          <field name="febrero"/>
+          <field name="marzo"/> -->
+        </tree>
+      </field>
+    </record>
+
+
+
+    <!-- actions -->
+    <record model="ir.actions.act_window" id="pos_route_config_route_config_action_window">
+      <field name="name">Configuración de ruta</field>
+      <field name="res_model">pos_route_config.route_config</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="pos_route_config_RC_report_action_window">
+      <field name="name">Reporte de configuracion de rutas</field>
+      <field name="res_model">pos_route_config.RC_report</field> 
+      <field name="view_mode">form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Reporte de configuración de rutas" id="pos_route_config_route_config_menu" action='pos_route_config_route_config_action_window'/>
+    <menuitem id="RC_report_route_config_menu" name="Reporte de configuracion de rutas" action="pos_route_config_RC_report_action_window" parent="pos_route_config_route_config_menu"/>
+
+  </data>
+</odoo>

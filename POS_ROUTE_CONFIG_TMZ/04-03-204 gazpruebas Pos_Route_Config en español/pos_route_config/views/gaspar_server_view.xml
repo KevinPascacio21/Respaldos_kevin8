@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- pos_route_config.gaspar action window -->
+        <record id="pos_route_config_gaspar_action" model="ir.actions.act_window">
+            <field name="name">Gaspar server</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos_route_config.gaspar_server</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Gaspar
+                </p><p>
+                    Click "Create" to add a new server 
+                </p>
+            </field>
+        </record>
+        
+        <!-- pos_route_config.gaspar tree view -->
+        <record id="pos_route_config_gaspar_view_tree" model="ir.ui.view">
+            <field name="name">Gaspar</field>
+            <field name="model">pos_route_config.gaspar_server</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="name"/>
+                    <field name="external_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="pos_route_config_gaspar_server_menu_act" 
+            name="Gaspar Server" 
+            parent="point_of_sale.menu_point_config_product" 
+            action="pos_route_config_gaspar_action" 
+            sequence="5"/>
+    </data>
+</odoo>

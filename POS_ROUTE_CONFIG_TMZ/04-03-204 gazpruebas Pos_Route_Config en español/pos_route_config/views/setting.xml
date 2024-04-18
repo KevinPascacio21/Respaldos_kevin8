@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">Pos Route Config Settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="10"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Route Configuration" data-key="pos_route_config">
+                        <h2>POS Route Configuration Settings</h2> 
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="route_config_supervisor">
+                                <div class="o_setting_left_pane"></div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Supervisor</span>
+                                    <div class="text-muted">
+                                        Select the supervisor to receive mail alerts of changing values
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="supervisor"
+                                                class="o_light_label"
+                                                colspan="4" nolabel="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box" id="route_config_g4s_api_url">
+                                <div class="o_setting_left_pane"></div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">G4spar api URL</span>
+                                    <div class="text-muted">
+                                        Write G4spar api URL
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="gas_api_url"
+                                                class="o_light_label"
+                                                colspan="4" nolabel="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box" id="route_config_g4s_api_url">
+                                <div class="o_setting_left_pane"></div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">G4spar server</span>
+                                    <div class="text-muted">
+                                        Select G4spar server name
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="gaspar_server"
+                                                class="o_light_label"
+                                                colspan="4" nolabel="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box" id="route_config_g4s_api_url">
+                                <div class="o_setting_left_pane">
+                                    <field name="use_weight_scale"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Use weight scale</span>
+                                    <div class="text-muted">
+                                        Check if a weight scale is available at the site
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_pos_route_config_settings" model="ir.actions.act_window">
+            <field name="name">Pos Route Configurations Settigns</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_id" ref="res_config_settings_view_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'point_of_sale'}</field>
+        </record> 
+    </data>
+</odoo>

@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view"  id="reporte_con_form">
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="model">pos_route_config_tmz.c_report</field>
+      <field name="arch" type="xml">
+        <form string="Sabana Control">
+          <sheet>
+            <div class="oe_title">
+              <h1><field name="name" force_save="1" readonly="1"/></h1>              
+            </div>
+            <group> <!--inicio de la primera clase -->
+              <!-- Controladores: -->
+              <field name="fecha_filtro"/>                   
+            </group>   <!--fin de la primera clase-->
+            <field name="relacion_ids" widget="many2many" mode="tree" readonly="1" force_save="1"> 
+              <tree create="false" editable="false" delete="false" default_order="route_creation_date"> 
+                <field name="route_creation_date" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="departure_date" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="arrival_date" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="name" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="pos_config_id" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_volume_meter" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_volume_meter" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="dif_volume_meter" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_weight_aux" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_weight_aux" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="dif_weight" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_percent" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_percent" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="dif_percent" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="avg_sector" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="hg_avg" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_carburation" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_carburation" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="dif_carburation" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_gauge" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_gauge" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="liters_receivable" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="refuel_liters" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="state" style="pointer-events:none;" readonly="1" force_save="1" widget="badge" decoration-success="state == 'finish'" decoration-warning="state == 'reception'" decoration-info="state == 'start'" decoration-muted="state == 'sale'"/>       <!-- decoration-success="state == 'finish'" decoration-warning="state == 'reception'" decoration-primary="state == 'start'" decoration-info="state == 'concil'"/>   Agarra los valores de la izq. Por eso se colocaron los nombres en ingles -->
+                <field name="employee_ids" style="pointer-events:none;" readonly="1" force_save="1" widget="many2many_tags"/>
+                <field name="x_studio_ayudante" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="justification" style="pointer-events:none;" readonly="1" force_save="1"/>
+              </tree>
+            </field>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="c_report_list"> 
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="model">pos_route_config_tmz.c_report</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="fecha_reporte"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="c_report_action_window">
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="res_model">pos_route_config_tmz.c_report</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- menu superior -->
+    <!--nombre y icono en la barra de herramientasg -->
+    <menuitem name="Reporte de configuración de rutas" id="c_report_menu_root" action="c_report_action_window"/>
+  </data>
+</odoo>

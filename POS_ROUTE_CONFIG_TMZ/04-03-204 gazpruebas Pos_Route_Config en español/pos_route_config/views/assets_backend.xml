@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend" name="js backend" inherit_id="web.assets_backend"> 
+			<xpath expr="." position="inside"> 
+				<script type="text/javascript" src="/pos_route_config/static/src/js/weight_scale_helper.js"></script> 
+			</xpath> 
+			<xpath expr="//link[last()]" position="after">
+				<!-- Add your fields here -->
+				<link rel="stylesheet" href="/pos_route_config/static/src/css/disable_input.css"/>
+			</xpath>
+		</template> 
+    </data>
+</odoo>

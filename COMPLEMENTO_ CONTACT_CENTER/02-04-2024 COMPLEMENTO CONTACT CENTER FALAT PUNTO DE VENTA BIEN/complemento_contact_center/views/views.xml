@@ -1,0 +1,52 @@
+<odoo>
+  <data>
+    <!-- Template para agregar estilo a la vista kanbal de donde se muestra a referencia del cliente -->
+    <template id="_assets_contact_center" inherit_id="web.assets_backend">
+      <xpath expr="." position="inside">
+        <link rel="stylesheet" type="text/css" href="/complemento_contact_center/static/src/css/c_center_theme.css"/>
+      </xpath> 
+    </template>
+    
+    <!-- product.pricelist inherit form view -->
+    <record id="complemento_contact_center_form_view" model="ir.ui.view">
+      <field name="name">res.partner.inherit.form</field> <!-- Se agrega el modelo res.partner de la vista del cliente (se agregará una nueva pagina llamada referencia dentro del cliente), se le agrega el inherit por lo general -->
+      <field name="model">res.partner</field> <!-- Se agrega el modelo res.partner de la vista del cliente -->
+      <field name="inherit_id" ref="base.view_partner_form"/> <!-- ID externo donde se colocara la pestaña de referencia que es la vista donde ingresamos al "cliente"            sale.view_sale_order_kanban o sale.view_order_form que es el form dentro del campo donde se muestran todos los datos ref="base.view_partner_form" que es la vista de "Cliente" ya que quiero poner en Cliente un campo nuevo llamado Referencia despues del campo de "servicio medido" del cliente en las secciones de abajo -->
+      <field name="arch" type="xml">
+        <!-- Add customer reference -->
+        <xpath expr="//notebook" position="inside" > <!-- Notebook seccion donde se encuentran las paginas, "Referencia" se agregará dentro de esa seccion -->
+            <page string="Referencia">
+              <group>
+                <field name="x_referencia" string="Referencia" widget="text" placeholder="Ingrese alguna referencia de su ubicación"/>
+              </group>
+            </page>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- Agregar campo x_referencia antes de un campo existente en otra vista -->
+    <record id="otra_vista_form_view" model="ir.ui.view">
+      <field name="name">res.partner.inherit.form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="studio_customization.odoo_studio_res_part_ef48fcf9-cdde-48d7-a96a-d8fb9cb5fdad"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='x_studio_cruce']" position="after">
+          <field name="x_referencia" string="Referencia"/>
+        </xpath>
+      </field>
+    </record>
+
+        <!-- Agregar campo x_referencia en la vista kanbal despues de Colonia del cliente-->
+    <record id="referencia_en_kanbal_form_view" model="ir.ui.view">
+      <field name="name">sale.order.inherit.form</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="studio_customization.odoo_studio_sale_ord_2adef03a-dcd9-4487-9969-420895a008af"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[contains(@class, 'o_kanban_record_bottom')]" position="after"> <!--Debajo de la clase donde quiero poner el campo de la referencia-->
+          <field name="x_referencia_partner" widget="char"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

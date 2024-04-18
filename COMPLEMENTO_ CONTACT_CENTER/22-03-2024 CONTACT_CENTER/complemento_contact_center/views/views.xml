@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+    <!-- product.pricelist inherit form view -->
+    <record id="complemento_contact_center_form_view" model="ir.ui.view">
+      <field name="name">res.partner.inherit.form</field> <!-- Se agrega el modelo res.partner de la vista del cliente (se agregará una nueva pagina llamada referencia dentro del cliente), se le agrega el inherit por lo general -->
+      <field name="model">res.partner</field> <!-- Se agrega el modelo res.partner de la vista del cliente -->
+      <field name="inherit_id" ref="base.view_partner_form"/> <!-- ID externo donde se colocara la pestaña de referencia que es la vista donde ingresamos al "cliente"            sale.view_sale_order_kanban o sale.view_order_form que es el form dentro del campo donde se muestran todos los datos ref="base.view_partner_form" que es la vista de "Cliente" ya que quiero poner en Cliente un campo nuevo llamado Referencia despues del campo de "servicio medido" del cliente en las secciones de abajo -->
+      <field name="arch" type="xml">
+        <!-- Add customer reference -->
+        <xpath expr="//notebook" position="inside" > <!-- Notebook seccion donde se encuentran las paginas, "Referencia" se agregará dentro de esa seccion -->
+          <!-- <div class="oe_chatter"> -->
+            <page string="Referencia">
+              <field name="x_referencia" string="Referencia" edit="true" editable="true" force_save="1"/>
+            </page>
+          <!-- </div> -->
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,1790 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_route_config
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-02 16:22+0000\n"
+"PO-Revision-Date: 2024-03-02 16:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"(lts)<br/>\n"
+"                                Dif. Carb(lts):"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"(lts)<br/>\n"
+"                                Dif. Peso:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                % Entrada:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                % Salida:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                A granel inicial:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Autoriza:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Carb. Entrada:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Peso Entrada:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Peso Salida:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Tanques 20 kg final:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Tanques 20 kg inicial:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Tanques 27 kg final:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Tanques 27 kg inicial:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Tanques 45 kg final:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                                Tanques 45 kg inicial:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>\n"
+"                            <br/>______________________________"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>   \n"
+"                                Dif. % Entrada:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>                         \n"
+"                                Carb. Salida:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>                         \n"
+"                                Tanques 30 kg final:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid ""
+"<br/>                         \n"
+"                                Tanques 30 kg inicial:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "<br/>______________________________"
+msgstr ""
+
+#. module: pos_route_config
+#: model:mail.template,body_html:pos_route_config.route_config_mail_template
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px\">\n"
+"                        Volume meter changed:<br/>\n"
+"                        The volume meter reading for route ${object.unit} has been altered<br/>\n"
+"                        Original reading: ${object.st_volume_meter_default}<br/>\n"
+"                        New reading: ${object.st_volume_meter}<br/>\n"
+"                        The following justificaiton has been given:<br/>\n"
+"                        \"${object.justification}\"\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px\">\n"
+"                        Litrómetro cambiado:<br/>\n"
+"                        La lectura del litrómetro para la ruta ${object.unit} ha sido alterada<br/>\n"
+"                        Lectura original: ${object.st_volume_meter_default}<br/>\n"
+"                        Nueva lectura: ${object.st_volume_meter}<br/>\n"
+"                        La siguiente justificación ha sido proporcionada:<br/>\n"
+"                        \"${object.justification}\"\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.pos_config_view_form_inherit
+msgid "<span class=\"o_form_label\">Distribution point name</span>"
+msgstr "<span class=\"o_form_label\">Nombre de punto de distribución</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span> kg</span>"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending 10 Kg tank</span>"
+msgstr "<span>Tanque 10 Kg final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending 20 Kg tank</span>"
+msgstr "<span>Tanque 20 Kg final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending 27 Kg tank</span>"
+msgstr "<span>Tanque 27 Kg final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending 30 Kg tank</span>"
+msgstr "<span>Tanque 30 Kg final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending 45 Kg tank</span>"
+msgstr "<span>Tanque 45 Kg final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending Carburation</span>"
+msgstr "<span>Carburación Final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending Percentage</span>"
+msgstr "<span>Porcentaje Final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending Rotogauge</span>"
+msgstr "<span>Rotogauge Final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending Volume</span>"
+msgstr "<span>Litrómetro Final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending bulk</span>"
+msgstr "<span>A granel final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Ending weight</span>"
+msgstr "<span>Peso Final</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting 10 Kg tank</span>"
+msgstr "<span>Tanque 10 Kg inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting 20 Kg tank</span>"
+msgstr "<span>Tanque 20 Kg inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting 27 Kg tank</span>"
+msgstr "<span>Tanque 27 Kg inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting 30 Kg tank</span>"
+msgstr "<span>Tanque 30 Kg inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting 45 Kg tank</span>"
+msgstr "<span>Tanque 45 Kg inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting Carburation</span>"
+msgstr "<span>Carburación Inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting Percentage</span>"
+msgstr "<span>Porcentaje Inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting Rotogauge</span>"
+msgstr "<span>Rotogauge Inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting Volume</span>"
+msgstr "<span>Litrómetro Inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting bulk</span>"
+msgstr "<span>A granel inicial</span>"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_kanban
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_kanban
+msgid "<span>Starting weight</span>"
+msgstr "<span>Peso Inicial</span>"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_order.py:0
+#, python-format
+msgid "A valid distribution point name must be configured first"
+msgstr "Un punto de distribución debe ser asignado primero"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_order.py:0
+#, python-format
+msgid ""
+"Activate gaspar unit in POS settings before trying to fetch gaspar data"
+msgstr ""
+"Activa la unidad gaspar en ajustes de PdV antes de intentar obtener datos de"
+" gaspar"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_search
+msgid "All started route configurations and today's route configuration"
+msgstr ""
+"Todas la configuraciones de ruta iniciadas y configuraciones de ruta de hoy"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_search
+msgid "All technical tests from today"
+msgstr "Todas las pryebas técnicas de hoy"
+
+#. module: pos_route_config
+#: model:res.groups,name:pos_route_config.group_route_config_manual_gaspar_conciliate
+msgid "Allow manual conciliation"
+msgstr "Permitir conciliación manual"
+
+#. module: pos_route_config
+#: model:res.groups,name:pos_route_config.group_route_config_writing_weight
+msgid "Allow write to scale"
+msgstr "Permitir escribir en bascula"
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_pos_route_config_report_data
+msgid "Almacen de datos"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_prueba_tecnica__x_studio_tipo_almacn__almacén
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__x_studio_tipo_almacn__almacén
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__x_studio_tipo_almacn__almacén
+#: model:ir.model.fields.selection,name:pos_route_config.selection__stock_location__x_studio_tipo_almacn__almacén
+msgid "Almacén"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_form
+msgid "Are you sure to finish this route configuration?"
+msgstr "¿Estás seguro que quieres finalizar esta configuración de ruta?"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_form
+msgid "Are you sure to revert this route configuration state to 'Sales'?"
+msgstr "¿Estás seguro que quieres revertir el estado de esta ruta a 'Ventas'?"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__arrival_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__arrival_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__arrival_date
+msgid "Arrival"
+msgstr "Llegada"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__arrival_approved_by_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__arrival_approved_by_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__arrival_approved_by_uid
+msgid "Arrival Approved By Uid"
+msgstr "Llegada aprobada por"
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_prueba_tecnica__x_studio_tipo_almacn__autotanque
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__x_studio_tipo_almacn__autotanque
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__x_studio_tipo_almacn__autotanque
+#: model:ir.model.fields.selection,name:pos_route_config.selection__stock_location__x_studio_tipo_almacn__autotanque
+msgid "Autotanque"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__x_studio_ayudante
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__x_studio_ayudante
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__x_studio_ayudante
+msgid "Ayudante"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__anno
+msgid "Año"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_session__can_close_session
+msgid "Can close POS session?"
+msgstr "¿Puede cerrar sesión PdV?"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__can_edit_en_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__can_edit_en_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__can_edit_en_weight
+msgid "Can edit ending weight?"
+msgstr "¿Puede editar peso final?"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__can_edit_form
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__can_edit_form
+msgid "Can edit form?"
+msgstr "¿Puede editar la forma?"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__can_edit_start_volume
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__can_edit_start_volume
+msgid "Can edit starting volume?"
+msgstr "¿Puede editar litrometro inicial?"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__can_edit_st_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__can_edit_st_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__can_edit_st_weight
+msgid "Can edit starting weight?"
+msgstr "¿Puede editar peso inicial?"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_config__can_start_session
+msgid "Can start POS session?"
+msgstr "¿Puede iniciar sesión PdV?"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__can_writing_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__can_writing_weight
+msgid "Can writing weight?"
+msgstr "¿Puede escribir peso?"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_order.py:0
+#: code:addons/pos_route_config/models/pos_order.py:0
+#, python-format
+msgid ""
+"Can't conciliate gaspar orders until current route configuration is in state"
+" 'Route Reception'"
+msgstr ""
+"No se puede conciliar órdenes de gaspar hasta que la configuración de ruta "
+"este en estatus 'Recepción de Ruta'"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Can't finish this route until a new POS session has been created"
+msgstr ""
+"No se puede finalizar esta configuracion de ruta hasta que una sesión PdV "
+"haya sido creada"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid ""
+"Can't start a new route until last route or POS session have been closed"
+msgstr ""
+"No se puede iniciar una sesión hasa que la última ruta o sesión de PdV haya "
+"sido cerrada"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_session.py:0
+#, python-format
+msgid "Can't start a session until a route configuration is done"
+msgstr ""
+"No se puede iniciar una sesión hasta que se haya empezado una configuración "
+"de ruta"
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_prueba_tecnica__x_studio_tipo_almacn__carburación
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__x_studio_tipo_almacn__carburación
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__x_studio_tipo_almacn__carburación
+#: model:ir.model.fields.selection,name:pos_route_config.selection__stock_location__x_studio_tipo_almacn__carburación
+msgid "Carburación"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__en_carburation
+msgid "Carburación final"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__st_carburation
+msgid "Carburación inicial"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__dif_carburation
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__dif_carburation
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__dif_carburation
+msgid "Carburation Difference"
+msgstr "Dif. Carburación"
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_config__route_config_state__finish
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_report_data__state__finish
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__state__finish
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__state__finish
+msgid "Cash Box Closed"
+msgstr "Cierre de caja"
+
+#. module: pos_route_config
+#: model_terms:ir.actions.act_window,help:pos_route_config.action_pos_route_config_prueba_tecnica_view
+msgid "Click \"Create\" to add a new object"
+msgstr "Presiona \"Crear\" para añadir un nuevo elemento"
+
+#. module: pos_route_config
+#: model_terms:ir.actions.act_window,help:pos_route_config.action_pos_route_config_route_config_view
+msgid "Click \"Create\" to add a new route configuration"
+msgstr "Presiona \"Crear\" para añadir una nueva configuración de ruta"
+
+#. module: pos_route_config
+#: model_terms:ir.actions.act_window,help:pos_route_config.pos_route_config_gaspar_action
+msgid "Click \"Create\" to add a new server"
+msgstr "Presiona \"Crear\" para agregar un nuevo servidor"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_session_form_inherit_gaspar
+msgid "Close Session & Post Entries"
+msgstr "Cerrar sesión y guardar entradas"
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__company_id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__company_id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__company_id
+msgid "Company"
+msgstr "Compañia"
+
+#. module: pos_route_config
+#: model:ir.actions.server,name:pos_route_config.action_conciliate_pos_orders
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_pos_form_inherit_gaspar_conciliation
+msgid "Conciliate orders"
+msgstr "Conciliar órdenes"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_session__gaspar_orders_cons
+msgid "Conciliated gaspar orders"
+msgstr "Ordenes de gaspar conciliadas"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.pos_config_view_form_inherit
+msgid "Configure distribution point name"
+msgstr "Configurar punto de distribución"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__create_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_gaspar_server__create_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__create_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__create_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__create_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__create_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__create_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_report_report_route_config__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__create_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_gaspar_server__create_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__create_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__create_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__create_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__create_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__create_date
+#: model:ir.model.fields,field_description:pos_route_config.field_report_report_route_config__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__departure_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__departure_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__departure_date
+msgid "Departure"
+msgstr "Salida"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__departure_approved_by_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__departure_approved_by_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__departure_approved_by_uid
+msgid "Departure Approved By Uid"
+msgstr "Salida aprobada por"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "Dif. Litrómetro:"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__dif_kilos
+msgid "Dif. kilos"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__dif_carburation
+msgid "Diferencia de carburación"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__dif_volume_meter
+msgid "Diferencia de litrómetro"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__dif_weight
+msgid "Diferencia de peso"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__dif_percent
+msgid "Diferencia de porcentaje"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_config__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_order__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_gaspar_server__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_session__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_report_pos_route_config_route_config_report__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_report_report_route_config__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_res_company__display_name
+#: model:ir.model.fields,field_description:pos_route_config.field_stock_location__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_config__distribution_point_name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_order__distribution_point_name
+msgid "Distribution point name"
+msgstr "Nombre de punto de distribución"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/prueba_tecnica.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Due to a volume meter change, a justification is nedeed"
+msgstr ""
+"Debido a que el litrómetro ha cambiado, una justificación es necesaria"
+
+#. module: pos_route_config
+#: model:res.groups,name:pos_route_config.group_route_config_edit
+msgid "Edit Route Configuration"
+msgstr "Editar configuración de ruta"
+
+#. module: pos_route_config
+#: model:res.groups,name:pos_route_config.group_route_config_edit_start_volume
+msgid "Edit starting volume meter"
+msgstr "Editar litrómetro inicial"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__employee_ids
+msgid "Empleado"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__employee_ids
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__employee_ids
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__employee_ids
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_tank_10_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_tank_10_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_tank_10_kg
+msgid "Ending 10 Kg tank"
+msgstr "Tanques 10 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_tank_20_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_tank_20_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_tank_20_kg
+msgid "Ending 20 Kg tank"
+msgstr "Tanques 20 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_tank_27_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_tank_27_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_tank_27_kg
+msgid "Ending 27 Kg tank"
+msgstr "Tanques 27 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_tank_30_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_tank_30_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_tank_30_kg
+msgid "Ending 30 Kg tank"
+msgstr "Tanques 30 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_tank_45_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_tank_45_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_tank_45_kg
+msgid "Ending 45 Kg tank"
+msgstr "Tanques 45 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_tank_bulk
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_tank_bulk
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_tank_bulk
+msgid "Ending Bulk"
+msgstr "A granel final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_carburation
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_carburation
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_carburation
+msgid "Ending Carburation"
+msgstr "Carburación Final"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/prueba_tecnica.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Ending Carburation can't be lower than 0 or higher than 100"
+msgstr "Carburación Final no puede ser menor a 0 o mayor a 100"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_percent
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_percent
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_percent
+msgid "Ending Percentage"
+msgstr "Porcentaje Final"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/prueba_tecnica.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Ending Percentage can't be lower than 0 or higher than 100"
+msgstr "Porcentaje Final no puede ser menor a 0 o mayor a 100"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_gauge
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_gauge
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_gauge
+msgid "Ending Rotogauge"
+msgstr "Rotogauge Final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_volume_meter
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_volume_meter
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_volume_meter
+msgid "Ending Volume"
+msgstr "Litrómetro Final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_weight
+msgid "Ending Weight"
+msgstr "Peso Final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__en_weight_aux
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__en_weight_aux
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__en_weight_aux
+msgid "Ending Weight Aux"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__state
+msgid "Estatus"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_gaspar_server__external_id
+msgid "External ID"
+msgstr "ID externo"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__date
+msgid "Fecha de creación"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__fecha_filtro
+msgid "Fecha de creación: "
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_search
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_search
+msgid "Filtrar {modelo}"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_form
+msgid "Finish configuration route"
+msgstr "Finalizar Configuración de Ruta"
+
+#. module: pos_route_config
+#: model_terms:ir.actions.act_window,help:pos_route_config.pos_route_config_gaspar_action
+#: model_terms:ir.ui.view,arch_db:pos_route_config.pos_config_view_form_inherit
+msgid "Gaspar"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.ui.menu,name:pos_route_config.pos_route_config_gaspar_server_menu_act
+msgid "Gaspar Server"
+msgstr "Servidor gaspar"
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_pos_route_config_gaspar_server
+msgid "Gaspar Server Description"
+msgstr "Descripción del servidor gaspar"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_order__gaspar_conciliated
+msgid "Gaspar conciliated"
+msgstr "Conciliación gaspar"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_order__ref_gaspar
+msgid "Gaspar reference"
+msgstr "Referencia Gaspar"
+
+#. module: pos_route_config
+#: model:ir.actions.act_window,name:pos_route_config.pos_route_config_gaspar_action
+msgid "Gaspar server"
+msgstr "Servidor gaspar"
+
+#. module: pos_route_config
+#: model:ir.actions.server,name:pos_route_config.action_get_gaspar_data
+msgid "Get gaspar data"
+msgstr "Obetner información de gaspar"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_order__hg
+msgid "Hg"
+msgstr ""
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_form
+#, python-format
+msgid "History"
+msgstr "Historial"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_config__id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_order__id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_gaspar_server__id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_session__id
+#: model:ir.model.fields,field_description:pos_route_config.field_report_pos_route_config_route_config_report__id
+#: model:ir.model.fields,field_description:pos_route_config.field_report_report_route_config__id
+#: model:ir.model.fields,field_description:pos_route_config.field_res_company__id
+#: model:ir.model.fields,field_description:pos_route_config.field_stock_location__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_stock_location
+msgid "Inventory Locations"
+msgstr "Ubicaciones de inventario"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_config__is_gaspar_available
+msgid "Is Gaspar Available?"
+msgstr "Gaspar disponible?"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.pos_config_view_form_inherit
+msgid "Is gaspar available"
+msgstr "Gaspar disponible"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__is_justification_nedeed
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__is_justification_nedeed
+msgid "Is justification needed?"
+msgstr "¿Justificación necesaria?"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__percent_just_flag
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__percent_just_flag
+msgid "Is percent justification required?"
+msgstr "¿Es una justificacion de procentaje requerida?"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__justification
+msgid "Justificación"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__justification
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__justification
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__justification
+msgid "Justification"
+msgstr "Justificación"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__dif_kilos
+msgid "Kilograms Difference"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_form
+msgid ""
+"La diferencia de porcentaje (l) es mayor a la diferencia de litrómetro, es "
+"necesario hacer un rebombeo"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_config____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_order____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_gaspar_server____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_session____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_report_pos_route_config_route_config_report____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_report_report_route_config____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_res_company____last_update
+#: model:ir.model.fields,field_description:pos_route_config.field_stock_location____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__write_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_gaspar_server__write_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__write_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__write_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__write_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__write_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__write_uid
+#: model:ir.model.fields,field_description:pos_route_config.field_report_report_route_config__write_uid
+msgid "Last Updated by"
+msgstr "Última actualizacion por"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__write_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_gaspar_server__write_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__write_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__write_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__write_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__write_date
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__write_date
+#: model:ir.model.fields,field_description:pos_route_config.field_report_report_route_config__write_date
+msgid "Last Updated on"
+msgstr "Última actualizacion el"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Last route configuration must be closed before opening a new one"
+msgstr ""
+"La última configuración de ruta debe ser cerrada antes de abrir una nueva"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.pos_config_view_form_inherit
+msgid "Leave unchecked only if this unit has no gaspar system."
+msgstr "Dejar sin marcar solo si esta unidad no tiene sistema de gaspar"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__refuel_liters
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__refuel_liters
+msgid "Liters to refuel"
+msgstr "Litros para recargar"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__refuel_liters
+msgid "Litros para recargar"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__liters_receivable
+msgid "Litros por cobrar"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "Litrómetro Entrada:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "Litrómetro Salida:"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__en_volume_meter
+msgid "Litrómetro final"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__st_volume_meter
+msgid "Litrómetro inicial"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "Llegada:"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__user_id
+msgid "Modified by"
+msgstr "Modificado por"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__modified_date
+msgid "Modified date"
+msgstr "Fecha modificacion"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_gaspar_server__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/prueba_tecnica.py:0
+#: code:addons/pos_route_config/models/prueba_tecnica.py:0
+#: code:addons/pos_route_config/models/prueba_tecnica.py:0
+#: code:addons/pos_route_config/models/prueba_tecnica.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_report_data__state__new
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__state__new
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__state__new
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__x_studio_related_field_4wPBB
+msgid "New Campo relacionado"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__st_volume_meter
+msgid "New value"
+msgstr "Valor nuevo"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__name
+msgid "Nombre: "
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.actions.act_window,help:pos_route_config.pos_route_config_route_config_history_action
+msgid "Nothing to show yet"
+msgstr "Nada para mostrar aún"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_session_form
+msgid "Orders"
+msgstr "Pedidos"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__st_volume_meter_default
+msgid "Original value"
+msgstr "Valor original"
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__refuel_state__paid
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__refuel_state__paid
+msgid "Paid"
+msgstr "PAGADO"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "PdV:"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__dif_percent_volume
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__dif_percent_volume
+msgid "Percent Difference (L)"
+msgstr "Diferencia de porcentaje (L)"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__dif_percent
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__dif_percent
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__dif_percent
+msgid "Percentage Difference"
+msgstr "Dif. Porcentaje"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__percent_justification
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__percent_justification
+msgid "Percentage justification"
+msgstr "Justificación de porcentaje"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__en_weight
+msgid "Peso final"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__en_weight_aux
+msgid "Peso final Aux"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__st_weight
+msgid "Peso inicial"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__st_weight_aux
+msgid "Peso inicial Aux"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.pos_config_view_form_inherit
+msgid "Point name"
+msgstr "Nombre de punto de distribición"
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Configuración del TPV"
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Pedidos del TPV"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__pos_config_id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__pos_config_id
+msgid "Point of sale"
+msgstr "Punto de venta"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__session_id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__session_id
+msgid "Point of sale session"
+msgstr "Sesión de punto de venta"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__en_percent
+msgid "Porcentaje final"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__st_percent
+msgid "Porcentaje inicial"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_prueba_tecnica__x_studio_tipo_almacn__portátil
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__x_studio_tipo_almacn__portátil
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__x_studio_tipo_almacn__portátil
+#: model:ir.model.fields.selection,name:pos_route_config.selection__stock_location__x_studio_tipo_almacn__portátil
+msgid "Portátil"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__hg_avg
+msgid "Promedio general"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__avg_sector
+msgid "Promedio sector"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__pos_config_id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__x_studio_punto_de_venta
+msgid "Punto de venta"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__rebombeo
+msgid "Rebombeo"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "Recargar:"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__name
+msgid "Referencia de ruta"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__refuel_state
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__refuel_state
+msgid "Refuel State"
+msgstr "Estado de recarga"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_create_report__relacion_ids
+msgid "Relacion"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.actions.act_window,name:pos_route_config.create_report_action_window
+#: model:ir.actions.report,name:pos_route_config.report_config_route
+#: model:ir.model,name:pos_route_config.model_report_report_route_config
+#: model:ir.ui.menu,name:pos_route_config.create_report_menu_root
+msgid "Reporte de configuración de rutas"
+msgstr ""
+
+#. module: pos_route_config
+#: model:res.groups,name:pos_route_config.group_route_config_revert_route_state
+msgid "Revert route config state"
+msgstr "Revertir estado de configuración de ruta"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_form
+msgid "Revert state"
+msgstr "Revertir estado"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__dif_gauge
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__dif_gauge
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__dif_gauge
+msgid "Rotogauge  Difference"
+msgstr "Dif Guage"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__en_gauge
+msgid "Rotogauge final"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__st_gauge
+msgid "Rotogauge inicial"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_session_form
+msgid "Route Config"
+msgstr "Conf. Ruta"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_config__route_config_state
+msgid "Route Config Status"
+msgstr "Estatus COnfiguración Ruta"
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_config__route_config_state__start
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_report_data__state__start
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__state__start
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__state__start
+#: model:res.groups,name:pos_route_config.group_route_config
+msgid "Route Configuration"
+msgstr "Configuración de Ruta"
+
+#. module: pos_route_config
+#: model:ir.actions.act_window,name:pos_route_config.pos_route_config_route_config_history_action
+#: model:ir.model,name:pos_route_config.model_pos_route_config_route_config_history
+msgid "Route Configuration History"
+msgstr "Historial de Configuración de Ruta"
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_report_pos_route_config_route_config_report
+msgid "Route Configuration Report"
+msgstr "Reporte de Configuración de Ruta"
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_config__route_config_state__reception
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_report_data__state__reception
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__state__reception
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__state__reception
+msgid "Route Reception"
+msgstr "Recepción de ruta"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__name
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__name
+msgid "Route Reference"
+msgstr "Referencia de ruta"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_session.py:0
+#, python-format
+msgid "Route config"
+msgstr "Conf. Ruta"
+
+#. module: pos_route_config
+#: model:ir.actions.act_window,name:pos_route_config.action_pos_route_config_route_config_view
+#: model:ir.model,name:pos_route_config.model_pos_route_config_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__route_config_id
+#: model_terms:ir.actions.act_window,help:pos_route_config.action_pos_route_config_route_config_view
+msgid "Route configuration"
+msgstr "Configuración de ruta"
+
+#. module: pos_route_config
+#: model_terms:ir.actions.act_window,help:pos_route_config.pos_route_config_route_config_history_action
+msgid "Route configuration History"
+msgstr "Historial de Configuración de Ruta"
+
+#. module: pos_route_config
+#: model:ir.ui.menu,name:pos_route_config.menu_pos_route_config
+msgid "Routes"
+msgstr "Rutas"
+
+#. module: pos_route_config
+#: model:ir.ui.menu,name:pos_route_config.menu_pos_route_config_route_config
+msgid "Routes Configuration"
+msgstr "Configuración de Rutas"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.reporte_config_form
+msgid "Sabana Control"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_config__route_config_state__concil
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_report_data__state__concil
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__state__concil
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__state__concil
+msgid "Sale Conciliation"
+msgstr "Conciliación de venta"
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_config__route_config_state__sale
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_report_data__state__sale
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__state__sale
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__state__sale
+msgid "Sales"
+msgstr "Ventas"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__crm_team_id
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__crm_team_id
+msgid "Sales team"
+msgstr "Equipo de venta"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "Salida:"
+msgstr ""
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_form
+#, python-format
+msgid "Session"
+msgstr "Sesión"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_res_company__short_name
+msgid "Short name"
+msgstr "Nombre corto"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_session.py:0
+#, python-format
+msgid ""
+"Sold kilograms do not match difference from starting and ending kilograms"
+msgstr "kilos vendidos no coincide con la diferencia de kilos de la ruta"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_session.py:0
+#, python-format
+msgid ""
+"Sold liters do not match difference from starting and ending percentage"
+msgstr ""
+"Litros vendidos no coincide con la diferencia de porcentaje de la ruta"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_session.py:0
+#: code:addons/pos_route_config/models/pos_session.py:0
+#, python-format
+msgid ""
+"Sold liters do not match difference from starting and ending volume meter"
+msgstr ""
+"Litros vendidos no coincide con la diferencia de litrómetros de la ruta"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_session.py:0
+#, python-format
+msgid "Sold liters do not match difference from starting and ending wight"
+msgstr "Litros vendidos no coincide con la diferencia de peso de la ruta"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_tank_10_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_tank_10_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_tank_10_kg
+msgid "Starting 10 Kg tank"
+msgstr "Tanques 10 kg inicial"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting 10 kg tank cannot be lower than Ending 10 kg tank"
+msgstr "Tanques 1o kg inicial no puede ser menor a tanque 10 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_tank_20_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_tank_20_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_tank_20_kg
+msgid "Starting 20 Kg tank"
+msgstr "Tanques 20 kg inicial"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting 20 kg tank cannot be lower than Ending 20 kg tank"
+msgstr "Tanques 20 kg inicial no puede ser menor a tanque 20 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_tank_27_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_tank_27_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_tank_27_kg
+msgid "Starting 27 Kg tank"
+msgstr "Tanques 27 kg inicial"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting 27 kg tank cannot be lower than Ending 27 kg tank"
+msgstr "Tanques 27 kg inicial no puede ser menor a tanque 27 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_tank_30_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_tank_30_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_tank_30_kg
+msgid "Starting 30 Kg tank"
+msgstr "Tanques 30 kg inicial"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting 30 kg tank cannot be lower than Ending 30 kg tank"
+msgstr "Tanques 30 kg inicial no puede ser menor a tanque 30 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_tank_45_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_tank_45_kg
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_tank_45_kg
+msgid "Starting 45 Kg tank"
+msgstr "Tanques 45 kg inicial"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting 45 kg tank cannot be lower than Ending 45 kg tank"
+msgstr "Tanques 45 kg inicial no puede ser menor a tanque 45 kg final"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_tank_bulk
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_tank_bulk
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_tank_bulk
+msgid "Starting Bulk"
+msgstr "A granel inicial"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_carburation
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_carburation
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_carburation
+msgid "Starting Carburation"
+msgstr "Carburación Inicial"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/prueba_tecnica.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting Carburation can't be lower than 0 or higher than 100"
+msgstr "Carburación final no puede ser menor a 0 o mayor a 100"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_percent
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_percent
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_percent
+msgid "Starting Percentage"
+msgstr "Porcentaje inicial"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/prueba_tecnica.py:0
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting Percentage can't be lower than 0 or higher than 100"
+msgstr "Porcentaje Inicial no puede ser menor a 0 o mayor a 100"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_gauge
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_gauge
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_gauge
+msgid "Starting Rotogauge"
+msgstr "Rotogauge inicial"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_volume_meter
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_volume_meter
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_volume_meter
+msgid "Starting Volume"
+msgstr "Litrometro inicial"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_volume_meter_default
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_volume_meter_default
+msgid "Starting Volume Default"
+msgstr "Litrómetro inicial por defecto"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting Volume must be lower than Ending volume"
+msgstr "Litrómetro inicial debe ser menor a Litrómetro Final "
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_weight
+msgid "Starting Weight"
+msgstr "Peso Inicial"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__st_weight_aux
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__st_weight_aux
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__st_weight_aux
+msgid "Starting Weight Aux"
+msgstr ""
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting Weight must be greater than Ending Weight"
+msgstr "Peso Inicial debe ser mayor a Peso Final"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "Starting bulk cannot be lower than Ending bulk"
+msgstr "A granel inicial no puede ser menor a granel final"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid ""
+"Starting percentage must be greater than Ending Percentage or add a "
+"justification"
+msgstr ""
+"Porcentaje inicial es debe ser mayor al porcentaje final o agregue una "
+"justificación"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__state
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__state
+msgid "Status"
+msgstr "Estatus"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__supervisor_mail
+msgid "Supervisor mail"
+msgstr "Correo del supervisor"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "Tanques 10 kg final:"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "Tanques 10 kg inicial:"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.actions.act_window,name:pos_route_config.action_pos_route_config_prueba_tecnica_view
+#: model:ir.model,name:pos_route_config.model_pos_route_config_prueba_tecnica
+#: model_terms:ir.actions.act_window,help:pos_route_config.action_pos_route_config_prueba_tecnica_view
+msgid "Technical test"
+msgstr "Prueba técnica"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_session.py:0
+#, python-format
+msgid "The route configuration for this session must be closed first"
+msgstr "La configuración de ruta de esta sesión debe estar cerrada primero"
+
+#. module: pos_route_config
+#: model:ir.model.constraint,message:pos_route_config.constraint_pos_config_distribution_point_name_unique
+msgid "There can only be one distribution point name per company"
+msgstr "Solo puede haber un punto de distribución por compañía"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.pos_config_view_form_inherit
+msgid ""
+"This is a required (unique) field to be able to fetch gaspar data for "
+"orders."
+msgstr ""
+"Este es un campo requerido para poder obtener la información de las ordenes "
+"de gaspar"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/route_config.py:0
+#, python-format
+msgid "This point of sales has no session to recover"
+msgstr "Este punto de venta no tiene una sesión para recuperar"
+
+#. module: pos_route_config
+#: model:ir.actions.report,name:pos_route_config.pos_route_config_report
+msgid "Ticket de recarga"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__x_studio_tipo_almacn
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__x_studio_tipo_almacn
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__x_studio_tipo_almacn
+#: model:ir.model.fields,field_description:pos_route_config.field_stock_location__x_studio_tipo_almacn
+msgid "Tipo Almacén"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_prueba_tecnica_search
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_route_config_route_config_search
+msgid "Today's Routes"
+msgstr "Rutas de hoy"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_order_tree_gaspar
+msgid "Total Gaspar liters"
+msgstr "Litros totales Gaspar"
+
+#. module: pos_route_config
+#: model:ir.model.fields,help:pos_route_config.field_pos_order__total_lt
+msgid "Total gas liters sold by POS"
+msgstr "Litros totales vendidos por PdV"
+
+#. module: pos_route_config
+#: model:ir.model.fields,help:pos_route_config.field_pos_order__total_lt_gas
+msgid "Total gas liters sold by g4s"
+msgstr "Litros totales vendidos por gaspar"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_session__total_kg
+msgid "Total kilos"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_order__total_lt
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_session__total_lt
+msgid "Total liters"
+msgstr "Litros totales"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_order__total_lt_gas
+msgid "Total liters Gaspar"
+msgstr "Litros totales Gaspar"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_order.py:0
+#, python-format
+msgid "Total liters do not match gaspar total liters for order %s"
+msgstr ""
+"Lo litros totales no coinciden con los itros totales de gaspar para la orden"
+" %s"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.view_pos_order_tree_gaspar
+msgid "Total odoo liters"
+msgstr "Litro totales Odoo"
+
+#. module: pos_route_config
+#: code:addons/pos_route_config/models/pos_order.py:0
+#, python-format
+msgid "Unable to fetch gaspar data, try again later"
+msgstr "No fue posible obtener la información, intenta más tarde"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_justification__unit
+msgid "Unit"
+msgstr "Unidad"
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config__refuel_state__unpaid
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_route_config_route_config_history__refuel_state__unpaid
+msgid "Unpaid"
+msgstr "NO PAGADO"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_report_data__data_ids
+msgid "Variables"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__dif_volume_meter
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__dif_volume_meter
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__dif_volume_meter
+msgid "Volume Difference"
+msgstr "Dif. Litrómetro"
+
+#. module: pos_route_config
+#: model:mail.template,subject:pos_route_config.route_config_mail_template
+msgid "Volume meter altered"
+msgstr "Alteración al litrómetro"
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_pos_route_config_justification
+msgid "Volume meter change justification"
+msgstr "Justificación para alteración de litrómetro"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__dif_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__dif_weight
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config_history__dif_weight
+msgid "Weight Difference"
+msgstr "Dif. Peso"
+
+#. module: pos_route_config
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_prueba_tecnica__dif_weight_volume
+#: model:ir.model.fields,field_description:pos_route_config.field_pos_route_config_route_config__dif_weight_volume
+msgid "Weight Difference (L)"
+msgstr "Diferencia de peso (L)"
+
+#. module: pos_route_config
+#: model:ir.model.fields.selection,name:pos_route_config.selection__pos_config__route_config_state__new
+msgid "Without route"
+msgstr "Sin ruta"
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "______________________________"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_pos_session
+msgid "biogas_conect"
+msgstr ""
+
+#. module: pos_route_config
+#: model:ir.model,name:pos_route_config.model_pos_route_config_create_report
+msgid "reportes"
+msgstr ""
+
+#. module: pos_route_config
+#: model_terms:ir.ui.view,arch_db:pos_route_config.route_config_report
+msgid "¡REBOMBEO NECESARIO!"
+msgstr ""

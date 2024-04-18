@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <record id="pos_route_config_report" model="ir.actions.report">
+            <field name="name">Ticket de recarga</field>
+            <field name="model">pos_route_config.route_config</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">pos_route_config.route_config_report</field>
+            <field name="report_file">Ticket de recarga</field>
+            <field name="binding_model_id" ref="model_pos_route_config_route_config"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="report_config_route" model="ir.actions.report">
+            <field name="name">Reporte de configuración de rutas</field> <!--sin problemas con nombres -->
+            <field name="model">pos_route_config.create_report</field> <!-- pos_route_config.create_report-->
+            <field name="report_type">xlsx</field>
+            <field name="report_name">report_route_config</field>
+            <field name="report_file">Reporte de configuración de rutas</field> <!-- Nombre del reporte -->
+            <field name="binding_model_id" ref="model_pos_route_config_create_report"/> <!--referencia del archivo de seguridad -->
+            <field name="binding_type">report</field>
+        </record>
+        <!-- <report string="Refuel ticket" 
+            id="pos_route_config_report"
+            model="pos_route_config.route_config"
+            report_type="qweb-pdf"
+            name="pos_route_config.route_config_report"
+            file="Ticket de recarga"
+            attachment_use="True"/> -->
+    </data>
+</odoo>

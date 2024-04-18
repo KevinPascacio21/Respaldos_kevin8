@@ -1,0 +1,13 @@
+<odoo>
+    <data>        
+        <record id="report_des_integr" model="ir.actions.report">
+            <field name="name">Reporte de descuento integrado</field> 
+            <field name="model">r_descuento_integrado.cr</field> 
+            <field name="report_type">xlsx</field>
+            <field name="report_name">report_descuen_integrado</field>
+            <field name="report_file">Reporte de descuento integrado</field> 
+            <field name="binding_model_id" ref="model_r_descuento_integrado_cr"/> 
+            <field name="binding_type">report</field> 
+        </record>
+    </data>
+</odoo>

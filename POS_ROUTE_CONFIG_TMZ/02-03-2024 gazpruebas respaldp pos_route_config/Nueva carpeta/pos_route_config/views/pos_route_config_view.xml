@@ -1,0 +1,92 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view"  id="reporte_config_form">
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="model">pos_route_config.create_report</field>
+      <field name="arch" type="xml">
+        <form string="Sabana Control">
+          <sheet>
+            <div class="oe_title">
+              <h1><field name="name" force_save="1" readonly="1"/></h1>              
+            </div>
+            <group> <!--inicio de la primera clase -->
+              <!-- Controladores: -->
+              <field name="fecha_filtro"/>                   
+            </group>   <!--fin de la primera clase -->
+            <field name="relacion_ids" force_save="1">
+              <tree delete="false" create="false" default_order="date"> <!--<tree delete="false" create="false" edit="false" editable="false"> --> <!--default_order="date"> -->
+                <field name="date" readonly="1"/> 
+                <field name="name" readonly="1"/>
+                <field name="pos_config_id"/>
+                <field name="st_volume_meter"/>
+                <field name="en_volume_meter"/>
+                <field name="dif_volume_meter"/>
+                <field name="st_weight_aux"/>
+                <field name="en_weight_aux"/>
+                <field name="dif_weight"/>
+                <field name="st_percent"/>
+                <field name="en_percent"/>
+                <field name="dif_percent"/>
+                <field name="avg_sector"/> 
+                <field name="hg_avg"/> 
+                <field name="st_carburation"/>
+                <field name="en_carburation"/>
+                <field name="dif_carburation"/>
+                <field name="st_gauge"/>
+                <field name="en_gauge"/>
+                <field name="liters_receivable"/> 
+                <field name="refuel_liters"/>
+                <field name="state"/>
+                <field name="employee_ids" widget="many2many_tags"/>
+                <field name="x_studio_ayudante"/>
+                <field name="justification"/><!-- <field name="date" readonly="1" force_save="1"/> 
+                <field name="name" readonly="1" force_save="1"/>
+                <field name="pos_config_id" readonly="1" force_save="1"/>
+                <field name="st_volume_meter" readonly="1" force_save="1"/>
+                <field name="en_volume_meter" readonly="1" force_save="1"/>
+                <field name="dif_volume_meter" readonly="1" force_save="1"/>
+                <field name="st_weight_aux" readonly="1" force_save="1"/>
+                <field name="en_weight_aux" readonly="1" force_save="1"/>
+                <field name="dif_weight" readonly="1" force_save="1"/>
+                <field name="st_percent" readonly="1" force_save="1"/>
+                <field name="en_percent" readonly="1" force_save="1"/>
+                <field name="dif_percent" readonly="1" force_save="1"/>
+                <field name="avg_sector" readonly="1" force_save="1"/> 
+                <field name="hg_avg" readonly="1" force_save="1"/> 
+                <field name="st_carburation" readonly="1" force_save="1"/>
+                <field name="en_carburation" readonly="1" force_save="1"/>
+                <field name="dif_carburation" readonly="1" force_save="1"/>
+                <field name="st_gauge" readonly="1" force_save="1"/>
+                <field name="en_gauge" readonly="1" force_save="1"/>
+                <field name="liters_receivable" readonly="1" force_save="1"/> 
+                <field name="refuel_liters" readonly="1" force_save="1"/>
+                <field name="state" readonly="1" force_save="1"/>
+                <field name="employee_ids" readonly="1" force_save="1" widget="many2many_tags"/>
+                <field name="x_studio_ayudante" readonly="1" force_save="1"/>
+                <field name="justification" readonly="1" force_save="1"/> -->
+              </tree>
+            </field>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="create_report_list"> 
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="model">pos_route_config.create_report</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="fecha_filtro"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="create_report_action_window">
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="res_model">pos_route_config.create_report</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- menu superior -->
+    <!--nombre y icono en la barra de herramientas -->
+    <menuitem name="Reporte de configuración de rutas" id="create_report_menu_root" action="create_report_action_window"/>
+  </data>
+</odoo>

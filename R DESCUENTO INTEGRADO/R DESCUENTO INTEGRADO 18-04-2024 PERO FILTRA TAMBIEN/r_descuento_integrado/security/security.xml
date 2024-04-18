@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <!-- Reglas --><record model="ir.rule" id="des_integr_multi_comp_rule_report">
+        <field name="name">Descuento integrado multi-company</field> 
+            <field name="model_id" ref="model_r_descuento_integrado_cr"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+</odoo>

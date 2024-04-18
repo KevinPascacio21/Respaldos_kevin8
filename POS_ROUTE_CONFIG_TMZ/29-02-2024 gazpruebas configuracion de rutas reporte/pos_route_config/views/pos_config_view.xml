@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- pos.config inherit kanban view -->
+        <record id="point_of_sale_view_pos_config_kanban_inherit" model="ir.ui.view">
+            <field name="name">pos.config.inherit.view.kanban</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('o_primary')]" position="after">
+                    <field name="route_config_state" widget="badge" optional="show" />                  
+                </xpath>                
+            </field>
+        </record>
+
+        <!-- pos.config inherit form view -->
+        <record id="pos_config_view_form_inherit" model="ir.ui.view">
+            <field name="name">pos.config.inherit.view.form</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='accounting_section']" position="after">
+                    <h2>Gaspar</h2>
+                    <div class="row mt16 o_settings_container" id="gaspar_dist_point_name">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Distribution point name</span>
+                                <div class="text-muted">
+                                    Configure distribution point name
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16" title="Leave unchecked only if this unit has no gaspar system.">
+                                        <label string="Is gaspar available" for="is_gaspar_available" class="col-lg-3 o_light_label" />
+                                        <field name="is_gaspar_available"/>
+                                    </div>
+                                    <div class="row mt16" title="This is a required (unique) field to be able to fetch gaspar data for orders.">
+                                        <label string="Point name" for="distribution_point_name" class="col-lg-3 o_light_label" />
+                                        <field name="distribution_point_name" attrs="{'required' : [('is_gaspar_available', '=', True)]}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

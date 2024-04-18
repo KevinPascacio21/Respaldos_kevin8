@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_route_config_pos_route_config,pos_route_config.pos_route_config,model_pos_route_config_pos_route_config,base.group_user,1,1,1,1
+access_pos_route_config_route_config,access_pos_route_config_route_config,model_pos_route_config_route_config,base.group_user,1,1,1,0
+access_pos_route_config_report_create,pos_route_config.report_create,model_pos_route_config_report_create,base.group_user,1,1,1,1
+access_pos_route_config_data_storage_report,pos_route_config.data_storage_report,model_pos_route_config_data_storage_report,base.group_user,1,1,1,1

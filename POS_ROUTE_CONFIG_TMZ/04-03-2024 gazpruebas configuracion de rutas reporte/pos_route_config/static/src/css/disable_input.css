@@ -1,0 +1,6 @@
+input[name=st_weight_aux] {
+    pointer-events: none;
+}
+input[name=en_weight_aux] {
+    pointer-events: none;
+}

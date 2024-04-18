@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- pos.order inherit tree view -->
+        <record id="view_pos_order_tree_gaspar" model="ir.ui.view">
+            <field name="name">pos.order.inherit.view.tree</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="total_lt" sum="Total odoo liters"/>
+                    <field name="ref_gaspar"/>
+                    <field name="hg"/>
+                    <field name="total_lt_gas" sum="Total Gaspar liters"/>
+                </xpath>   
+                
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="gaspar_conciliated" readonly="1"/>                    
+                </xpath>
+            </field>
+        </record>
+
+        <!-- pos.order inherit form view -->
+        <record id="view_pos_pos_form_inherit_gaspar_conciliation" model="ir.ui.view">
+            <field name="name">pos.order.inherit.view.form</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fiscal_position_id']" position="after">
+                    <field name="gaspar_conciliated" readonly="1"/>
+                </xpath>
+                <xpath expr="//button[@name='refund']" position="after">
+                    <!-- Add your fields here -->
+                    <button groups="pos_route_config.group_route_config_manual_gaspar_conciliate" name="action_manual_conciliate_order" type="object" string="Conciliate orders" attrs="{'invisible': [('gaspar_conciliated', '=', True)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_conciliate_pos_orders" model="ir.actions.server">
+            <field name="name">Conciliate orders</field>
+            <field name="model_id" ref="point_of_sale.model_pos_order"/>
+            <!-- <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/> -->
+            <field name="binding_model_id" ref="point_of_sale.model_pos_order" />
+            <field name="state">code</field>
+            <field name="code">records.action_conciliate_orders()</field>
+        </record>
+
+        <record id="action_get_gaspar_data" model="ir.actions.server">
+            <field name="name">Get gaspar data</field>
+            <field name="model_id" ref="point_of_sale.model_pos_order"/>
+            <!-- <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/> -->
+            <field name="binding_model_id" ref="point_of_sale.model_pos_order" />
+            <field name="state">code</field>
+            <field name="code">records.get_gaspar_data()</field>
+        </record>
+    </data>
+</odoo>

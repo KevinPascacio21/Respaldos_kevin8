@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+        <!-- Add you code here -->
+        <record id="server_name_CANCUN" model="pos_route_config.gaspar_server">
+            <field name="name">Cancún</field>
+            <field name="external_id">CANCUN</field>
+        </record>
+        <record id="server_name_CHIH" model="pos_route_config.gaspar_server">
+            <field name="name">Chihuahua</field>
+            <field name="external_id">CHIHUAHUA</field>
+        </record>
+        <record id="server_name_MAMEME" model="pos_route_config.gaspar_server">
+            <field name="name">Jalisco foráneo Mameme</field>
+            <field name="external_id">MAMEME</field>
+        </record>
+        <record id="server_name_LALAJA" model="pos_route_config.gaspar_server">
+            <field name="name">Jalisco zona metro Lalaja</field>
+            <field name="external_id">LALAJA</field>
+        </record>
+        <record id="server_name_MERIDA" model="pos_route_config.gaspar_server">
+            <field name="name">Mérida</field>
+            <field name="external_id">MERIDO</field>
+        </record>
+        <record id="server_name_MORELOS" model="pos_route_config.gaspar_server">
+            <field name="name">Morelos</field>
+            <field name="external_id">MORELOS</field>
+        </record>
+        <record id="server_name_SINALOA" model="pos_route_config.gaspar_server">
+            <field name="name">Sinaloa</field>
+            <field name="external_id">SINALOA</field>
+        </record>
+        <record id="server_name_SONORA" model="pos_route_config.gaspar_server">
+            <field name="name">Sonora</field>
+            <field name="external_id">SONORA</field>
+        </record>
+        <record id="server_name_TIJUANA" model="pos_route_config.gaspar_server">
+            <field name="name">Tijuana</field>
+            <field name="external_id">TIJUANA</field>
+        </record>
+        <record id="server_name_UNIGAS" model="pos_route_config.gaspar_server">
+            <field name="name">Unigas</field>
+            <field name="external_id">UNIGAS</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <menuitem id="menu_pos_route_config" name="Routes" parent="point_of_sale.menu_point_root" sequence="99" groups="pos_route_config.group_route_config"/>
+        <!-- <menuitem id="menu_pos_route_config" name="Routes" parent="point_of_sale.menu_point_root" sequence="99" action="pos_route_config.action_pos_route_config_route_config_view" groups="pos_route_config.group_route_config"/> -->
+        
+        <!-- <menuitem id="menu_pos_route_config_gaspar"       name="Gaspar"               
+            parent="pos_route_config.menu_pos_route_config" action="pos_route_config_gaspar_action"            groups="pos_route_config.group_route_config"/> -->
+
+        <menuitem id="menu_pos_route_config_route_config" name="Routes Configuration" 
+            parent="pos_route_config.menu_pos_route_config" action="action_pos_route_config_route_config_view" groups="pos_route_config.group_route_config"/>
+        <!-- <menuitem id="menu_pos_route_config_route" name="Route" 
+            parent="pos_route_config.menu_pos_route_config" action="pos_route_config_route_action" groups="pos_route_config.group_route_config"/> -->
+    </data>
+</odoo>

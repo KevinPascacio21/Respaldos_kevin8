@@ -1,0 +1,20 @@
+/* Vista de la referencia del cliente en el Kanbal de contat center*/
+/* .o_field_char.o_field_widget  { Nombre del campo donde se encuentra la referencia en la vista kanban
+    align-items: center;
+    font-family: "Roboto", "Odoo Unicode Support Noto", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    margin: 10px;
+} */
+
+
+.o_referencia_kanb_widget { /*Class creada para utilizarla en un campo en especifico debido a que la otra la contenian varios campos y editaba en general*/
+    font-family: "Roboto", "Odoo Unicode Support Noto", sans-serif;
+    font-size: 1.08333333rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #adb5bd !important;
+    text-align: center;
+    margin: 10px;
+}

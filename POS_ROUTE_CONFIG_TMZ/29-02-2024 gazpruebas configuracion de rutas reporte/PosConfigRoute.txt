@@ -1,0 +1,429 @@
+ROUTE CONFIG.PY
+
+
+############################################################################################
+class RC_report(models.Model): 
+    _name = 'pos_route_config.create_report'
+    _description = 'reportes'
+
+    name = fields.Char(string='Route Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'))
+    company_id = fields.Many2one(comodel_name='res.company', required=True, default=lambda self: self.env.company)
+    fecha_filtro = fields.Date(string='Fecha de creación: ')
+
+    relacion_ids = fields.Many2many(comodel_name='pos_route_config.report_data',  inverse_name='data_ids', string='Relacion')
+    
+    @api.model
+    def create(self, vals):
+        vals['name'] = 'Reporte de rutas de configuración: ' + vals['fecha_filtro']
+        return super(RC_report, self).create(vals)
+    
+    def _get_time_zone(self):
+        res_users_obj = self.env['res.users']
+        userstz = res_users_obj.browse(self._uid).tz
+        a = 0
+        if userstz:
+            hours = timezone(userstz)
+            fmt = '%Y-%m-%d %H:%M:%S %Z%z'
+            now = datetime.now()
+            loc_dt = hours.localize(datetime(now.year, now.month, now.day,
+                                             now.hour, now.minute, now.second))
+            timezone_loc = (loc_dt.strftime(fmt))
+            diff_timezone_original = timezone_loc[-5:-2]
+            timezone_original = int(diff_timezone_original)
+            s = str(datetime.now(timezone(userstz)))
+            s = s[-6:-3]
+            timezone_present = int(s)*-1
+            a = timezone_original + ((
+                timezone_present + timezone_original)*-1)
+        return a
+    
+    def write(self, vals):
+        vals['name'] = 'Reporte de rutas de configuración: ' + vals['fecha_filtro']
+        return super(RC_report, self).write(self, vals)
+    
+    
+    @api.onchange('fecha_filtro')
+    def _get_name(self): 
+        for doc in self:
+            if doc.fecha_filtro:
+
+                init_date = doc.fecha_filtro
+                out_date = doc.fecha_filtro
+                time_zone = self._get_time_zone()
+
+                 # --------------------------------------------------------- Fecha ---------------------------------------------------------
+
+                fecha_entrada = init_date.strftime("%Y-%m-%d")
+                fecha_salida = out_date.strftime("%Y-%m-%d")
+                
+                date_start = fecha_entrada + ' 00:00:00'
+                date_end = fecha_salida + ' 23:59:59'
+
+                date_start_search = datetime.strptime(date_start, '%Y-%m-%d %H:%M:%S') + timedelta(hours=abs(time_zone))
+                date_end_search = datetime.strptime(date_end, '%Y-%m-%d %H:%M:%S') + timedelta(hours=abs(time_zone))
+                rec = self.env['pos_route_config.route_config'].search([('create_date', '>=', date_start_search), ('create_date', '<=', date_end_search), ("company_id.name", "=", doc.company_id.name)]) #search([('anno', '=', doc.fecha_filtro)]) 
+                self.relacion_ids = [(5,0,0)]
+                for res in rec:
+                    line = {}
+                    line['date'] = res.date
+                    line['name'] = res.name
+                    line['pos_config_id'] = res.pos_config_id
+                    line['st_volume_meter'] = res.st_volume_meter
+                    line['en_volume_meter'] = res.en_volume_meter
+                    line['dif_volume_meter'] = res.dif_volume_meter
+                    line['st_weight_aux'] = res.st_weight_aux
+                    line['en_weight_aux'] = res.en_weight_aux
+                    line['dif_weight'] = res.dif_weight
+                    line['st_percent'] = res.st_percent
+                    line['en_percent'] = res.en_percent
+                    line['dif_percent'] = res.dif_percent
+                    line['avg_sector'] = res.avg_sector #Error
+                    line['hg_avg'] = res.hg_avg         #Error
+                    line['st_carburation'] = res.st_carburation
+                    line['en_carburation'] = res.en_carburation
+                    line['dif_carburation'] = res.dif_carburation
+                    line['st_gauge'] = res.st_gauge
+                    line['en_gauge'] = res.en_gauge
+                    line['liters_receivable'] = res.liters_receivable #Error   
+                    line['refuel_liters'] = res.refuel_liters
+                    line['state'] = res.state
+                    for employee in res.employee_ids:
+                        line['employee_ids'] = [(4, employee.id)]
+                        #line['employee_ids'] = res.employee_ids
+                    line['x_studio_ayudante'] = res.x_studio_ayudante
+                    line['justification'] = res.justification
+                    self.relacion_ids = [(0,0,line)]
+
+
+
+class reporte_s(models.Model): #esta almacena los datos
+    _name = 'pos_route_config.report_data'
+    _description = 'Almacen de datos'
+
+    data_ids = fields.Many2one(comodel_name='pos_route_config.create_report', string='Variables', readonly=True)
+
+    date = fields.Date(string='Fecha de creación', default=fields.Date.today())
+    name = fields.Char(string='Referencia de ruta', default='Nuevo')
+    #route_config_id = fields.Many2one(string='Route configuration', comodel_name='pos_route_config.route_config')
+    pos_config_id = fields.Many2one(comodel_name='pos.config', string='Punto de venta')
+    st_volume_meter = fields.Float(string='Litrómetro inicial')
+    en_volume_meter = fields.Float(string='Litrómetro final')
+    dif_volume_meter = fields.Float(string='Diferencia de litrómetro')
+    st_weight = fields.Float(string='Peso inicial')
+    st_weight_aux = fields.Float(string='Peso inicial Aux')
+    en_weight = fields.Float(string='Peso final')
+    en_weight_aux = fields.Float(string='Peso final Aux')
+    dif_weight = fields.Float(string='Diferencia de peso') 
+    st_percent = fields.Float(string='Porcentaje inicial')
+    en_percent = fields.Float(string='Porcentaje final')
+    dif_percent = fields.Float(string='Diferencia de porcentaje')
+    avg_sector = fields.Float(string='Promedio sector')#Promedio sector
+    hg_avg = fields.Float(string='Promedio general')#Promedio general
+    st_carburation = fields.Integer(string="Carburación inicial")
+    en_carburation = fields.Integer(string="Carburación final")   
+    dif_carburation = fields.Integer(string='Diferencia de carburación')
+    st_gauge = fields.Integer(string='Rotogauge inicial')
+    en_gauge = fields.Integer(string='Rotogauge final')
+    refuel_liters = fields.Float(string="Litros para recargar")
+    liters_receivable = fields.Float(string="Litros por cobrar")
+    state = fields.Selection(string='Estatus', default='new',
+        selection=[('new', 'New'), 
+                   ('start', 'Route Configuration'), 
+                   ('sale', 'Sales'), 
+                   ('reception', 'Route Reception'), 
+                   ('concil', 'Sale Conciliation'), 
+                   ('finish', 'Cash Box Closed')]) 
+
+    employee_ids = fields.Many2many(comodel_name='hr.employee', string='Empleado')
+    x_studio_ayudante = fields.Many2one('hr.employee', string='Ayudante') 
+    justification = fields.Text(string='Justificación')
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+RPT_POS_ROUTE_CONGIG.PY
+
+from odoo import api, fields, models
+
+class RouteConfigReport(models.Model):
+    _name = 'report.report_route_config' 
+    _inherit = 'report.report_xlsx.abstract' #---------------------------------
+    _description = 'Reporte de configuración de rutas'
+    
+    def generate_xlsx_report(self, workbook, data, route_config):
+        for ctrl in route_config:
+            report_name = 'Reporte de configuración de ruta'
+            # One sheet by partner
+
+            #Celdas
+            sheet = workbook.add_worksheet(report_name[:31])
+            sheet.write(0, 4, report_name, workbook.add_format({'bold': True, 'align': 'center'}))
+            sheet.set_column(1, 1, 20)
+            sheet.set_column(2, 2, 25)
+            sheet.set_column(3, 3, 25)
+            sheet.set_column(4, 4, 25)
+            sheet.set_column(5, 5, 20)
+            sheet.set_column(6, 6, 25)
+            sheet.set_column(7, 7, 20)
+            sheet.set_column(8, 8, 25)
+            sheet.set_column(9, 9, 25)
+            sheet.set_column(10, 10, 25)
+            sheet.set_column(11, 11, 20)
+            sheet.set_column(12, 12, 25)
+            sheet.set_column(13, 13, 20)
+            sheet.set_column(14, 14, 25)
+            sheet.set_column(15, 15, 25)
+            sheet.set_column(16, 16, 25)
+            sheet.set_column(17, 17, 20)
+            sheet.set_column(18, 18, 25)
+            sheet.set_column(19, 19, 20)
+            sheet.set_column(20, 20, 25)
+            sheet.set_column(21, 21, 25)
+            sheet.set_column(22, 22, 25)
+            sheet.set_column(23, 23, 20)
+            sheet.set_column(24, 24, 25)
+            sheet.set_column(25, 25, 20)
+
+
+            title_cell = workbook.add_format({'bold': True, 'font_color': 'black', 'bg_color': '#F1FADA', 'align': 'center'})
+            format_cell = workbook.add_format({'font_color': 'black', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_Date = workbook.add_format({'font_color': 'black', 'border': True, 'border_color': '#F1FADA', 'num_format': 'dd/mm/yy', 'align': 'center'})
+            
+            #Dar formato a las celdas
+            format_cell_white = workbook.add_format({'font_color': 'black', 'bg_color': '#ffffff', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_yellow = workbook.add_format({'font_color': 'black', 'bg_color': '#eeff00', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_red = workbook.add_format({'font_color': 'black', 'bg_color': '#ff0000', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_orange = workbook.add_format({'font_color': 'black', 'bg_color': '#ffcc00', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_grey = workbook.add_format({'font_color': 'black', 'bg_color': '#b1b1b1', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_blue = workbook.add_format({'font_color': 'black', 'bg_color': '#70c6f5', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_purple = workbook.add_format({'font_color': 'black', 'bg_color': '#c69dff', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_black = workbook.add_format({'font_color': 'black', 'bg_color': '#1f1f1f', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_pink = workbook.add_format({'font_color': 'black', 'bg_color': '#ff98cd', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_green = workbook.add_format({'font_color': 'black', 'bg_color': '#6eff42', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+
+
+            sheet.write(2, 2, 'Fecha de creación', title_cell)
+            sheet.write(2, 3, 'Referencia de ruta', title_cell)
+            sheet.write(2, 4, 'Punto de venta', title_cell)
+            sheet.write(2, 5, 'Litrometro inicial', title_cell)
+            sheet.write(2, 6, 'Litrometro final', title_cell)
+            sheet.write(2, 7, 'Diferencia Litrometro', title_cell)
+            sheet.write(2, 8, 'Peso inicial', title_cell)
+            sheet.write(2, 9, 'Peso final', title_cell)
+            sheet.write(2, 10, 'Diferencia de Peso', title_cell)
+            sheet.write(2, 11, 'Porcentaje inicial', title_cell)
+            sheet.write(2, 12, 'Porcentaje final', title_cell)
+            sheet.write(2, 13, 'Diferencia Porcentaje', title_cell)
+            sheet.write(2, 14, 'Promedio sector', title_cell)
+            sheet.write(2, 15, 'Promedio general', title_cell)
+            sheet.write(2, 16, 'Carburación inicial', title_cell)
+            sheet.write(2, 17, 'Carburación final', title_cell)
+            sheet.write(2, 18, 'Diferencia de Carburación', title_cell)
+            sheet.write(2, 19, 'Rotogauge inicial', title_cell)
+            sheet.write(2, 20, 'Rotogauge final', title_cell)
+            sheet.write(2, 21, 'Litros por cobrar', title_cell)
+            sheet.write(2, 22, 'Litros para recargar', title_cell)
+            sheet.write(2, 23, 'Estatus', title_cell)
+            sheet.write(2, 24, 'Empleado', title_cell)
+            sheet.write(2, 25, 'Ayudante', title_cell)
+            sheet.write(2, 26, 'Justificación', title_cell)
+
+
+            row = 3
+            for line in ctrl.relacion_ids:
+                sheet.write(row, 2, line.date, format_cell_Date)
+                sheet.write(row, 3, line.name, format_cell)
+                sheet.write(row, 4, line.pos_config_id.name, format_cell) 
+                sheet.write(row, 5, line.st_volume_meter, format_cell)
+                sheet.write(row, 6, line.en_volume_meter, format_cell)
+                sheet.write(row, 7, line.dif_volume_meter, format_cell)
+                sheet.write(row, 8, line.st_weight_aux, format_cell)
+                sheet.write(row, 9, line.en_weight_aux, format_cell)
+                sheet.write(row, 10, line.dif_weight, format_cell)
+                sheet.write(row, 11, line.st_percent, format_cell)
+                sheet.write(row, 12, line.en_percent, format_cell)
+                sheet.write(row, 13, line.dif_percent, format_cell)
+                sheet.write(row, 14, line.avg_sector , format_cell)        
+                sheet.write(row, 15, line.hg_avg, format_cell) #promedio general  
+                sheet.write(row, 16, line.st_carburation, format_cell)
+                sheet.write(row, 17, line.en_carburation, format_cell)
+                sheet.write(row, 18, line.dif_carburation, format_cell)
+                sheet.write(row, 19, line.st_gauge, format_cell)
+                sheet.write(row, 20, line.en_gauge, format_cell)
+                sheet.write(row, 21, line.liters_receivable, format_cell)
+                sheet.write(row, 22, line.refuel_liters, format_cell)
+                if line.state == "start": 
+                        sheet.write(row, 23, line.state, format_cell_white)
+                elif line.state == "Route Configuration":
+                       sheet.write(row, 23, line.state, format_cell_yellow)
+                elif line.state == "sale":
+                       sheet.write(row, 23, line.state, format_cell_red)
+                elif line.state == "Sales":
+                       sheet.write(row, 23, line.state, format_cell_orange)
+                elif line.state == "reception":
+                       sheet.write(row, 23, line.state, format_cell_grey)
+                elif line.state == "Route Reception":
+                       sheet.write(row, 23, line.state, format_cell_blue)
+                elif line.state == "concil":
+                       sheet.write(row, 23, line.state, format_cell_purple)
+                elif line.state == "Sale Conciliation":
+                       sheet.write(row, 23, line.state, format_cell_black)
+                elif line.state == "finish":
+                       sheet.write(row, 23, line.state, format_cell_pink)
+                elif line.state == "Cash Box Closed":
+                       sheet.write(row, 23, line.state, format_cell_green)
+                sheet.write(row, 24, line.employee_ids.name if line.employee_ids else '', format_cell)#, format_cell)  #Error
+                sheet.write(row, 25, line.x_studio_ayudante.name if line.x_studio_ayudante else '', format_cell)
+                sheet.write(row, 26, line.justification, format_cell)
+                row += 1
+
+
+----------------------------------------------------------------------------------------------
+
+REPORTE>pos_route_config.xml
+<odoo>
+    <data>
+        <record id="pos_route_config_report" model="ir.actions.report">
+            <field name="name">Ticket de recarga</field>
+            <field name="model">pos_route_config.route_config</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">pos_route_config.route_config_report</field>
+            <field name="report_file">Ticket de recarga</field>
+            <field name="binding_model_id" ref="model_pos_route_config_route_config"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="report_config_route" model="ir.actions.report">
+            <field name="name">Reporte de configuración de rutas</field> <!--sin problemas con nombres -->
+            <field name="model">pos_route_config.create_report</field> <!-- pos_route_config.create_report-->
+            <field name="report_type">xlsx</field>
+            <field name="report_name">report_route_config</field>
+            <field name="report_file">Reporte de configuración de rutas</field> <!-- Nombre del reporte -->
+            <field name="binding_model_id" ref="model_pos_route_config_create_report"/> <!--referencia del archivo de seguridad -->
+            <field name="binding_type">report</field>
+        </record>
+        <!-- <report string="Refuel ticket" 
+            id="pos_route_config_report"
+            model="pos_route_config.route_config"
+            report_type="qweb-pdf"
+            name="pos_route_config.route_config_report"
+            file="Ticket de recarga"
+            attachment_use="True"/> -->
+    </data>
+</odoo>
+
+
+-------------------------------------------------------------------------------------------------------
+SECURITY
+
+
+
+access_pos_route_config_create_report,pos_route_config.create_report,model_pos_route_config_create_report,base.group_user,1,1,1,1
+access_pos_route_config_report_data,pos_route_config.report_data,model_pos_route_config_report_data,base.group_user,1,1,1,1
+
+--------------------------------------------------------------------------------------------------------
+pos_route_config_view
+
+
+<odoo>
+  <data>
+    <record model="ir.ui.view"  id="reporte_config_form">
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="model">pos_route_config.create_report</field>
+      <field name="arch" type="xml">
+        <form string="Sabana Control">
+          <sheet>
+            <div class="oe_title">
+              <h1><field name="name" force_save="1" readonly="1"/></h1>              
+            </div>
+            <group> <!--inicio de la primera clase -->
+              <!-- Controladores: -->
+              <field name="fecha_filtro"/>                   
+            </group> <!-- fin de la primera clase -->
+            <field name="relacion_ids" force_save="1">
+              <tree delete="false" default_order="date"> <!--estacion asc un tree es una tabla, los fields dentro de ellos son los apartados, el delete false es para no poder borrar registros -->
+                <field name="date"/>
+                <field name="name"/>
+                <field name="pos_config_id"/>
+                <field name="st_volume_meter"/>
+                <field name="en_volume_meter"/>
+                <field name="dif_volume_meter"/>
+                <field name="st_weight_aux"/>
+                <field name="en_weight_aux"/>
+                <field name="dif_weight"/>
+                <field name="st_percent"/>
+                <field name="en_percent"/>
+                <field name="dif_percent"/>
+                <field name="avg_sector"/> <!--error-->
+                <field name="hg_avg"/> <!--error-->
+                <field name="st_carburation"/>
+                <field name="en_carburation"/>
+                <field name="dif_carburation"/>
+                <field name="st_gauge"/>
+                <field name="en_gauge"/>
+                <field name="liters_receivable"/> 
+                <field name="refuel_liters"/>
+                <field name="state"/>
+                <field name="employee_ids" widget="many2many_tags"/>
+                <field name="x_studio_ayudante"/>
+                <field name="justification"/> 
+              </tree>
+            </field>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="create_report_list"> 
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="model">pos_route_config.create_report</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="fecha_filtro"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="create_report_action_window">
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="res_model">pos_route_config.create_report</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- menu superior -->
+    <!--nombre y icono en la barra de herramientas -->
+    <menuitem name="Reporte de configuración de rutas" id="create_report_menu_root" action="create_report_action_window"/>
+  </data>
+</odoo>
+
+
+
+
+
+
+
+
+
+                    # if res.state =="new":
+                    #     line['state'] = "nuevo"
+                    # elif res.state =="New":
+                    #     line['state'] = "Nuevo"
+                    # elif res.state =="start":
+                    #     line['state'] = "Comenzar"
+                    # elif res.state =="Route Configuration":
+                    #     line['state'] = "Configuración de Ruta"
+                    # elif res.state =="sale":
+                    #     line['state'] = "venta"
+                    # elif res.state =="Sales":
+                    #     line['state'] = "Ventas"
+                    # elif res.state =="reception":
+                    #     line['state'] = "recepción"
+                    # elif res.state =="Route Reception":
+                    #     line['state'] = "Recepción de rutas"
+                    # elif res.state =="concil":
+                    #     line['state'] = "concilio"
+                    # elif res.state =="Sale Conciliation":
+                    #     line['state'] = "Conciliación de ventas"
+                    # # elif res.state =="finish":
+                    # #     line['state'] = "Finalizado"
+                    # elif res.state =="Cash Box Closed":
+                    #     line['state'] = "Cierre de caja"

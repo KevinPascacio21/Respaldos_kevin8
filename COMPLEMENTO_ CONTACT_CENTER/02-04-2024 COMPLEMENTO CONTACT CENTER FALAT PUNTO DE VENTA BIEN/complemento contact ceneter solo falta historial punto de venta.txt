@@ -1,0 +1,274 @@
+# -*- coding: utf-8 -*-
+
+from . import c_contact_center
+
+
+######################################################################################################
+
+c_contact_center.py:
+
+
+# -*- coding: utf-8 -*-
+from datetime import datetime, timedelta
+from functools import partial
+from itertools import groupby
+from odoo import api, fields, models
+
+# #Modelo que hereda al sale order (contact center) 
+class complemento_contact_center(models.Model):
+    _inherit = 'sale.order'
+
+
+    # Tracking fields
+    name = fields.Char(tracking=True)
+    currency_id = fields.Many2one(tracking=True)
+    company_id = fields.Many2one(tracking=True)
+
+#Heredo los campos de sale order(contact center) y en caso de que sean editados, que se muestren en la seccion de abajo
+    # partner_id = fields.Many2one(tracking=True)
+    # x_studio_telefono = fields.Char(readonly=False, tracking=True)
+    # x_studio_direccin_de_contacto = fields.Char(tracking=True)
+    # x_studio_colonia = fields.Char(tracking=True)
+
+    x_studio_folio = fields.Integer(tracking=True)
+    x_studio_estatus_pedido = fields.Selection(
+        selection=[('Recibido', 'Recibido'),
+                   ('Transmitido', 'Transmitido'),
+                   ('Confirmado', 'Confirmado'), 
+                   ('Cancelado', 'Cancelado')],  tracking=True)
+    # validity_date = fields.Date(tracking=True) no existe
+    date_order = fields.Datetime(readonly=False, tracking=True)
+    pricelist_id = fields.Many2one(readonly=False, tracking=True)
+    payment_term_id = fields.Many2one(readonly=False, tracking=True)
+    x_studio_punto_de_venta = fields.Many2one(tracking=True)
+    x_studio_tipo_almacn = fields.Selection(
+        selection=[('Almacén', 'Almacén'),
+                   ('Portátil', 'Portátil'), 
+                   ('Autotanque', 'Autotanque'),
+                   ('Carburación', 'Carburación')], tracking=True)
+    x_studio_mtodos_de_contacto = fields.Selection(
+        selection=[('Vía telefónica', 'Vía telefónica'), 
+                   ('WhatsApp', 'WhatsApp'),
+                   ('Facebook messenger', 'Facebook messenger'),
+                   ('Página web', 'Página web'),
+                   ('App', 'App')],  tracking=True)
+    # x_studio_punto_de_venta = fields.Many2one(tracking=True)
+
+
+#------pestaña de Lineas de la orden para heredar los campos de sale.order.line------------------------------------
+    order_line = fields.One2many(
+        comodel_name='sale.order.line',
+        inverse_name='order_id',
+        string='Order Lines',
+        copy=True
+    )
+
+
+    #------------------------------pestaña de Más informacón:------------------------------------
+    #Ventas:
+    user_id = fields.Many2one(tracking=True)
+    # team_id = fields.Many2one(tracking=True) #Equipo de ventas, NO FILTRA NINGUN DATO
+    company_id = fields.Many2one(tracking=True) #Empresa SIN PERMISOS
+    require_signature = fields.Boolean(readonly=False, tracking=True)
+    require_payment = fields.Boolean(readonly=False, tracking=True)
+    client_order_ref = fields.Char(tracking=True)
+    tag_ids = fields.Many2many(tracking=True) #Etiquetas NO ME MUESTRA SU HISTORIAL
+    #Facturación:
+    fiscal_position_id = fields.Many2one(tracking=True)
+    analytic_account_id = fields.Many2one(tracking=True)
+    invoice_status = fields.Selection(
+        selection=[('upselling', 'Oportunidad de venta adicional'),
+                   ('invoiced', 'Facturado por completo'),
+                   ('to invoice', 'A facturar'), 
+                   ('no', 'Nada que facturar')], readonly=False,  tracking=True)
+    #Entrega:
+    warehouse_id = fields.Many2one(readonly=False, tracking=True) #Almacén NO ME DEJA EDITAR EL CAMPO
+    incoterm = fields.Many2one(tracking=True)
+    picking_policy = fields.Selection( #Política de entrega NO SE PUEDE EDITAR
+        selection=[('direct', 'Lo antes posible'), 
+                   ('one', 'Cuando todos los productos estén listos')], readonly=False, tracking=True)    
+    commitment_date = fields.Datetime(tracking=True)
+    #Reportes:
+    origin = fields.Char(tracking=True)
+    opportunity_id = fields.Many2one(tracking=True)
+    campaign_id = fields.Many2one(tracking=True)
+    medium_id = fields.Many2one(tracking=True)
+    source_id = fields.Many2one(tracking=True)
+  
+
+    # #------------------------------pestaña de Firma del cliente:------------------------------------
+    signed_by = fields.Char(tracking=True)
+    signed_on = fields.Datetime(tracking=True)
+    signature = fields.Binary(tracking=True)
+
+    #Campo computado para que x_referencia (de resPartner) se muestre en la vista kambal (de sale order)
+    x_referencia_partner = fields.Char(string='Referencia del Socio', compute='_compute_referencia_partner')
+
+    @api.depends('partner_id.x_referencia')
+    def _compute_referencia_partner(self):
+        for order in self:
+            order.x_referencia_partner = order.partner_id.x_referencia
+
+    
+
+#Modelo que agrega campos necesarios al respartner (datos del modelo)
+class c_center(models.Model):
+    _inherit = 'res.partner'
+
+    x_referencia = fields.Char(tracking=True)
+
+
+class table_lineas_orden(models.Model):
+    _inherit = 'sale.order.line'
+
+    product_id = fields.Many2one(readonly=False, tracking=True)
+    name = fields.Text(tracking=True)
+    product_uom_qty = fields.Float(tracking=True)
+    qty_delivered = fields.Float(readonly=False, tracking=True)
+    qty_invoiced = fields.Float(tracking=True)
+    product_uom = fields.Many2one(readonly=False, tracking=True)
+    price_unit = fields.Float(tracking=True)
+    tax_id = fields.Many2many(tracking=True)
+    price_subtotal= fields.Monetary(tracking=True)
+
+######################################################################################################
+
+security:
+
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_complemento_contact_center_complemento_contact_center,complemento_contact_center.complemento_contact_center,model_complemento_contact_center_complemento_contact_center,base.group_user,1,1,1,1
+access_complemento_contact_center_c_center,complemento_contact_center.c_center,model_complemento_contact_center_c_center,base.group_user,1,1,1,1
+
+#######################################################################################################
+
+
+statics/src>css>c_center_theme.css:
+
+
+/* Vista de la referencia del cliente en el Kanbal de contat center*/
+.o_field_char.o_field_widget { /*Nombre del campo donde se encuentra la referencia en la vista kanban*/
+    margin: 0;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    font-family: "Roboto", "Odoo Unicode Support Noto", sans-serif;
+    font-size: 1.08333333rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #adb5bd !important;
+    text-align: left;
+    margin: 10px;
+}
+
+
+#########################################################################################################
+
+
+views:
+
+
+<odoo>
+  <data>
+    <!-- Template para agregar estilo a la vista kanbal de donde se muestra a referencia del cliente -->
+    <template id="_assets_contact_center" inherit_id="web.assets_backend">
+      <xpath expr="." position="inside">
+        <link rel="stylesheet" type="text/css" href="/complemento_contact_center/static/src/css/c_center_theme.css"/>
+      </xpath> 
+    </template>
+    
+    <!-- product.pricelist inherit form view -->
+    <record id="complemento_contact_center_form_view" model="ir.ui.view">
+      <field name="name">res.partner.inherit.form</field> <!-- Se agrega el modelo res.partner de la vista del cliente (se agregará una nueva pagina llamada referencia dentro del cliente), se le agrega el inherit por lo general -->
+      <field name="model">res.partner</field> <!-- Se agrega el modelo res.partner de la vista del cliente -->
+      <field name="inherit_id" ref="base.view_partner_form"/> <!-- ID externo donde se colocara la pestaña de referencia que es la vista donde ingresamos al "cliente"            sale.view_sale_order_kanban o sale.view_order_form que es el form dentro del campo donde se muestran todos los datos ref="base.view_partner_form" que es la vista de "Cliente" ya que quiero poner en Cliente un campo nuevo llamado Referencia despues del campo de "servicio medido" del cliente en las secciones de abajo -->
+      <field name="arch" type="xml">
+        <!-- Add customer reference -->
+        <xpath expr="//notebook" position="inside" > <!-- Notebook seccion donde se encuentran las paginas, "Referencia" se agregará dentro de esa seccion -->
+            <page string="Referencia">
+              <group>
+                <field name="x_referencia" string="Referencia" widget="text" placeholder="Ingrese alguna referencia de su ubicación"/>
+              </group>
+            </page>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- Agregar campo x_referencia antes de un campo existente en otra vista -->
+    <record id="otra_vista_form_view" model="ir.ui.view">
+      <field name="name">res.partner.inherit.form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="studio_customization.odoo_studio_res_part_ef48fcf9-cdde-48d7-a96a-d8fb9cb5fdad"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='x_studio_cruce']" position="after">
+          <field name="x_referencia" string="Referencia"/>
+        </xpath>
+      </field>
+    </record>
+
+        <!-- Agregar campo x_referencia en la vista kanbal despues de Colonia del cliente-->
+    <record id="referencia_en_kanbal_form_view" model="ir.ui.view">
+      <field name="name">sale.order.inherit.form</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="studio_customization.odoo_studio_sale_ord_2adef03a-dcd9-4487-9969-420895a008af"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[contains(@class, 'o_kanban_record_bottom')]" position="after"> <!--Debajo de la clase donde quiero poner el campo de la referencia-->
+          <field name="x_referencia_partner" widget="char"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>
+
+
+#####################################################################################################3
+inist.py
+
+
+# -*- coding: utf-8 -*-
+
+from . import controllers
+from . import models
+
+
+
+#######################################################################################################
+
+manifest:
+
+
+# -*- coding: utf-8 -*-
+{
+    'name': "complemento_contact_center",
+
+    'summary': """
+        Historial de cambios del cliente y referencias""",
+
+    'description': """
+        Historial de cambios del cliente y referencias
+    """,
+
+    'author': "My Company",
+    'website': "http://www.yourcompany.com",
+
+    # Categories can be used to filter modules in modules listing
+    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
+    # for the full list
+    'category': 'Uncategorized',
+    'version': '0.1',
+
+    # any module necessary for this one to work correctly
+    'depends': ['base', 'sale'],
+
+    # always loaded
+    'data': [
+        # 'security/ir.model.access.csv',
+        'views/views.xml',
+        'views/templates.xml',
+    ],
+    # only loaded in demonstration mode
+    'demo': [
+        'demo/demo.xml',
+    ],
+}
+

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- pos_route_config.route_config_history tree view -->
+        <record id="pos_route_config_route_config_history_view_tree" model="ir.ui.view">
+            <field name="name">pos_route_config.route_config_history.view.tree</field>
+            <field name="model">pos_route_config.route_config_history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="route_config_id" invisible="1"/>
+                    <field name="user_id"/>
+                    <field name="modified_date"/>
+                    <field name="state"/>   
+                    <field name="x_studio_tipo_almacn" invisible="1" /> 
+
+                    <field name="x_studio_ayudante"/>
+
+                    <field name="st_weight"  />
+                    <field name="st_volume_meter" />
+                    <field name="st_percent" />
+                    <field name="st_gauge" />
+                    <field name="st_carburation" />
+                    <field name="en_weight" />
+                    <field name="en_volume_meter" />
+                    <field name="en_percent" />
+                    <field name="en_gauge" />
+                    <field name="en_carburation" />    
+                    
+                    <field name="st_tank_10_kg" />
+                    <field name="st_tank_20_kg" />
+                    <field name="st_tank_27_kg" />
+                    <field name="st_tank_30_kg" />
+                    <field name="st_tank_45_kg" />
+                    <field name="st_tank_bulk" />
+                    <field name="en_tank_10_kg" />
+                    <field name="en_tank_20_kg" />
+                    <field name="en_tank_27_kg" />
+                    <field name="en_tank_30_kg" />
+                    <field name="en_tank_45_kg" />
+                    <field name="en_tank_bulk" />
+
+                    <field name="dif_weight"/>
+                    <field name="dif_volume_meter"/>
+                    <field name="dif_percent"/>
+                    <field name="dif_carburation"/>
+                    <field name="dif_kilos"/>
+
+                    <field name="x_studio_ayudante"/>
+                    <field name="employee_ids"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!-- pos_route_config.route_config_history action window -->
+        <record id="pos_route_config_route_config_history_action" model="ir.actions.act_window">
+            <field name="name">Route Configuration History</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos_route_config.route_config_history</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Route configuration History
+                </p><p>
+                    Nothing to show yet
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

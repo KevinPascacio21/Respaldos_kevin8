@@ -1,0 +1,525 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<!-- Tree -->
+		<record id="view_pos_route_config_route_config_tree" model="ir.ui.view">
+			<field name="name">view.pos.route.config.route.config.tree</field>
+			<field name="model">pos_route_config.route_config_view</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+					<field name="date" />
+					<field name="pos_config_id" />
+					<field name="st_weight" />
+					<field name="st_volume_meter" />
+					<field name="st_percent" />
+					<field name="st_gauge" />
+					<field name="st_carburation" />
+					<field name="en_weight" />
+					<field name="en_volume_meter" />
+					<field name="en_percent" />
+					<field name="en_gauge" />
+					<field name="en_carburation" />
+					<field name="state" decoration-success="state == 'finish'" decoration-warning="state == 'reception'" decoration-primary="state == 'start'" decoration-info="state == 'concil'" widget="badge" optional="show" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Kanban -->
+		<record id="view_pos_route_config_route_config_kanban" model="ir.ui.view">
+			<field name="name">view.pos.route.config.route.config.kanban</field>
+			<field name="model">pos_route_config.route_config</field>
+			<field name="arch" type="xml">
+				<kanban class="o_kanban_dashboard o_pos_kanban">
+					<field name="name" />
+					<field name="date" />
+					<field name="pos_config_id" />
+					<field name="st_weight" />
+					<field name="st_volume_meter" />
+					<field name="st_percent" />
+					<field name="st_gauge" />
+					<field name="st_carburation" />
+					<field name="en_weight" />
+					<field name="en_volume_meter" />
+					<field name="en_percent" />
+					<field name="en_gauge" />
+					<field name="en_carburation" />
+					<field name="employee_ids"/>
+					<field name="x_studio_tipo_almacn"/>
+					<field name="st_tank_10_kg"/>
+					<field name="st_tank_20_kg"/>
+					<field name="st_tank_27_kg"/>
+					<field name="st_tank_30_kg"/>
+					<field name="st_tank_45_kg"/>
+					<field name="st_tank_bulk"/>
+					<field name="en_tank_10_kg"/>
+					<field name="en_tank_20_kg"/>
+					<field name="en_tank_27_kg"/>
+					<field name="en_tank_30_kg"/>
+					<field name="en_tank_45_kg"/>
+					<field name="en_tank_bulk"/>
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_global_click">
+								<div class="o_kanban_card_header">
+									<div class="o_kanban_card_header_title mb16">
+										<div class="o_primary">
+											<t t-esc="record.name.value" />
+											<t t-esc="record.pos_config_id.value"/>
+										</div>
+										<div>
+											<field name="employee_ids"/>
+										</div>
+										<div>
+											<field name="state" decoration-success="state == 'finish'" decoration-warning="state == 'reception'" decoration-primary="state == 'start'" decoration-info="state == 'concil'" widget="badge" optional="show" />
+										</div>
+									</div>
+									<!-- <div class="o_kanban_manage_button_section">
+										<a class="o_kanban_manage_toggle_button" href="#"><i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/></a>
+									</div> -->
+								</div>
+								<div class="container o_kanban_card_content">
+									<div class="row" attrs="{'invisible':[('x_studio_tipo_almacn','=','Portátil')]}">
+										<div class="col-6 o_kanban_primary_left">
+											<div class="row">
+												<div class="col-6">
+													<span>Starting weight</span>
+												</div>
+												<div class="col-6">
+													<field name="st_weight" /> <span> kg</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Starting Volume</span>
+												</div>
+												<div class="col-6">
+													<field name="st_volume_meter" /> <span> l</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Starting Percentage</span>
+												</div>
+												<div class="col-6">
+													<field name="st_percent" /> <span> %</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Starting Rotogauge</span>
+												</div>
+												<div class="col-6">
+													<field name="st_gauge" />
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Starting Carburation</span>
+												</div>
+												<div class="col-6">
+													<field name="st_carburation" /> <span> %</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-6 o_kanban_primary_right">
+											<div class="row">
+												<div class="col-6">
+													<span>Ending weight</span>
+												</div>
+												<div class="col-6">
+													<field name="en_weight" /> <span> kg</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Ending Volume</span>
+												</div>
+												<div class="col-6">
+													<field name="en_volume_meter" /> <span> l</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Ending Percentage</span>
+												</div>
+												<div class="col-6">
+													<field name="en_percent" /> <span> %</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Ending Rotogauge</span>
+												</div>
+												<div class="col-6">
+													<field name="en_gauge" />
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Ending Carburation</span>
+												</div>
+												<div class="col-6">
+													<field name="en_carburation" /> <span> %</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row" attrs="{'invisible':[('x_studio_tipo_almacn','!=','Portátil')]}">
+										<div class="col-6 o_kanban_primary_left">
+											<div class="row">
+												<div class="col-6">
+													<span>Starting 10 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="st_tank_10_kg" /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Starting 20 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="st_tank_20_kg" /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Starting 27 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="st_tank_27_kg" /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Starting 30 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="st_tank_30_kg" />
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Starting 45 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="st_tank_45_kg" /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Starting bulk</span>
+												</div>
+												<div class="col-6">
+													<field name="st_tank_bulk" /> 
+												</div>
+											</div>
+										</div>
+										<div class="col-6 o_kanban_primary_right">
+											<div class="row">
+												<div class="col-6">
+													<span>Ending 10 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="en_tank_10_kg" /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Ending 20 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="en_tank_20_kg" /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Ending 27 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="en_tank_27_kg" /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Ending 30 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="en_tank_30_kg" />
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Ending 45 Kg tank</span>
+												</div>
+												<div class="col-6">
+													<field name="en_tank_45_kg" /> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<span>Ending bulk</span>
+												</div>
+												<div class="col-6">
+													<field name="en_tank_bulk" /> 
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- <div style="text-align:right;">
+										<field name="current_user_id" widget="many2one_avatar_user" />
+									</div> -->
+								</div>
+								<!-- <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+									<div class="row">
+										<div class="col-6 o_kanban_card_manage_section o_kanban_manage_view">
+											<div role="menuitem" class="o_kanban_card_manage_title">
+												<span>View</span>
+											</div>
+											<div role="menuitem">
+												<a name="460" type="action">Orders</a>
+											</div>
+											<div role="menuitem">
+												<a name="459" type="action">Sessions</a>
+											</div>
+										</div>
+										<div class="col-6 o_kanban_card_manage_section o_kanban_manage_new">
+											<div role="menuitem" class="o_kanban_card_manage_title">
+												<span>Reporting</span>
+											</div>
+											<div role="menuitem">
+												<a name="461" type="action">Orders</a>
+											</div>
+										</div>
+									</div>
+
+									<div t-if="widget.editable" class="o_kanban_card_manage_settings row" groups="point_of_sale.group_pos_manager">
+										<div role="menuitem" class="col-12">
+											<a type="edit">Settings</a>
+										</div>
+									</div>
+								</div> -->
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+
+		<!-- Form -->
+		<record id="view_pos_route_config_route_config_form" model="ir.ui.view">
+			<field name="name">view.pos.route.config.route.config.form</field>
+			<field name="model">pos_route_config.route_config</field>
+			<field name="arch" type="xml">
+				<form>
+					<field name="rebombeo" invisible="1"/>
+					<div class="alert alert-warning" role="alert" attrs="{'invisible': [('rebombeo', '=', False)]}">
+						La diferencia de porcentaje (l) es mayor a la diferencia de litrómetro, es necesario hacer un rebombeo
+					</div>
+					<header>
+						<button name="revert_route_state" string="Revert state" 
+							confirm="Are you sure to revert this route configuration state to 'Sales'?" 
+							groups="pos_route_config.group_route_config_revert_route_state"
+							attrs="{'invisible':[('state', '!=', 'reception')]}"
+							type="object"/>
+						<button name="finish_route_config" string="Finish configuration route" confirm="Are you sure to finish this route configuration?" type="object" attrs="{'invisible':[('state','!=','sale')]}" class="btn-primary" />
+						<field name="state" widget="statusbar" options="{'fold_field': 'fold'}" />
+					</header>
+					<sheet>
+						<field name="session_id" invisible="1"/>
+						<div class="oe_button_box" name="button_box">
+							<button name="action_view_session" type="object" class="oe_stat_button"
+								string="Session" icon="fa-shopping-bag" attrs="{'invisible': [('session_id', '=', False)]}"/>
+							<button name="action_view_route_history" type="object" class="oe_stat_button"
+								string="History" icon="fa-history" />
+						</div>
+						<div class="oe_title">
+							<h1>
+								<field name="name" readonly="1" />
+							</h1>
+						</div>
+						<group name="group_top">
+							<field name="pos_config_id" attrs="{'readonly':[('state','!=','new')]}" domain="[('company_id', '=', company_id)]" required="1" />
+							<!-- <field name="employee_ids" widget="many2many_tags" attrs="{'readonly':[('state','!=','new')]}" domain="[('company_id', '=', company_id)]" required="1" /> -->
+							<field name="employee_ids" widget="many2many_tags" domain="[('company_id', '=', company_id)]" required="1" />
+							<field name="company_id" readonly="1" />
+							<field name="x_studio_tipo_almacn" readonly="1"/>
+							<field name="can_edit_form" invisible="0"/>
+							<field name="can_edit_start_volume" invisible="1" />
+							<field name="is_justification_nedeed" invisible="1"/>
+							<field name="can_writing_weight" invisible="0"/> 
+							<field name="can_edit_st_weight" invisible="0"/> 
+							<field name="can_edit_en_weight" invisible="0"/>
+						</group>
+						<group name="group_bottom">
+							<group name="group_left_carb">
+								<div class="row">
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="st_carburation"></label>	
+									</div>
+									<div class="col-12 col-lg-6">									
+										<field name="st_carburation" attrs="{'readonly':[('state','!=','new'), ('can_edit_form', '=', False)]}" />
+									</div>
+								</div>								
+							</group>
+							<group name="group_right_carb">
+								<div class="row">
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="en_carburation"></label>	
+									</div>
+									<div class="col-12 col-lg-6">									
+										<field name="en_carburation" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+									</div>
+								</div>
+							</group>
+							
+							<group name="group_left" attrs="{'invisible':[('x_studio_tipo_almacn','=','Portátil')]}">
+								<!-- Columna izquierda -->
+								<div class="row">
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="st_weight"></label>	
+									</div>
+									<div id="st_weight_field" class="col-12 col-lg-6">				
+										<field name="st_weight" force_save="1" attrs="{'readonly':[('can_edit_st_weight', '=', False)],'invisible':[('can_edit_st_weight', '=', True)]}"/>					
+										<field name="st_weight_aux" attrs="{'invisible':[('can_edit_st_weight', '=', False)]}"/>
+										<widget name="st_weight_scale" attrs="{'invisible':[('can_edit_st_weight', '=', False)]}" />
+
+										<!-- <field name="st_weight" attrs="{'invisible':[('can_edit_st_weight', '=', False)]}"/> -->
+										<!-- <button type="button" icon="fa-balance-scale" name="calc_start_weight" class="btn-link"> Use weight scale</button> -->
+									</div>
+
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="st_volume_meter"></label>	
+									</div>
+									<div class="col-12 col-lg-6">
+										<field name="st_volume_meter" attrs="{'readonly':[('can_edit_start_volume', '=', False)]}" />
+									</div>
+
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="st_percent"></label>	
+									</div>
+									<div class="col-12 col-lg-6">
+										<field name="st_percent" attrs="{'readonly':[('state','!=','new'), ('can_edit_form', '=', False)]}" />
+									</div>
+
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="st_gauge"></label>	
+									</div>
+									<div class="col-12 col-lg-6">
+										<field name="st_gauge" attrs="{'readonly':[('state','!=','new'), ('can_edit_form', '=', False)]}" />
+									</div>
+								</div>								
+							</group>
+							<group name="group_right" attrs="{'invisible':[('x_studio_tipo_almacn','=','Portátil')]}">
+								<!-- Columna derecha -->
+								<div class="row">
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="en_weight"></label>	
+									</div>
+									<div class="col-12 col-lg-6">
+
+
+										<field name="en_weight" force_save="1" attrs="{'readonly':[('can_edit_en_weight', '=', False)],'invisible':[('can_edit_en_weight', '=', True)]}"/>					
+										<field name="en_weight_aux" attrs="{'invisible':[('can_edit_en_weight', '=', False)]}"/>
+										<widget name="en_weight_scale" attrs="{'invisible':[('can_edit_en_weight', '=', False)]}" />
+
+										<!-- <field name="en_weight"  attrs="{'invisible':[('can_edit_en_weight', '=', False)], 'readonly': [('state','=', 'new')]}"/> -->
+										<!-- <field name="en_weight_aux" attrs="{'invisible':['|', ('state', '=', 'new'),('can_edit_en_weight', '=', True)]}"/> -->
+										<!-- <widget name="en_weight_scale" attrs="{'invisible':['|', ('state', '=', 'new'),('can_edit_en_weight', '=', True)]}" /> -->
+									</div>
+	
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="en_volume_meter"></label>	
+									</div>
+									<div class="col-12 col-lg-6">
+										<field name="en_volume_meter" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+									</div>
+	
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="en_percent"></label>	
+									</div>
+									<div class="col-12 col-lg-6">
+										<field name="en_percent" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+									</div>
+									
+									<div class="col-12 col-lg-6">
+										<label class="o_form_label" for="en_gauge"></label>	
+									</div>
+									<div class="col-12 col-lg-6">
+										<field name="en_gauge" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+									</div>
+								</div>
+								
+							</group>
+
+							<group name="group_left" attrs="{'invisible':[('x_studio_tipo_almacn','!=','Portátil')]}">
+								<!-- Columna izquierda -->
+								<field name="st_tank_10_kg" attrs="{'readonly':[('state','!=','new'), ('can_edit_form', '=', False)]}" />
+								<field name="st_tank_20_kg" attrs="{'readonly':[('state','!=','new'), ('can_edit_form', '=', False)]}" />
+								<field name="st_tank_27_kg" attrs="{'readonly':[('state','!=','new'), ('can_edit_form', '=', False)]}" />
+								<field name="st_tank_30_kg" attrs="{'readonly':[('state','!=','new'), ('can_edit_form', '=', False)]}" />
+								<field name="st_tank_45_kg" attrs="{'readonly':[('state','!=','new'), ('can_edit_form', '=', False)]}" />
+								<field name="st_tank_bulk" attrs="{'readonly':[('state','!=','new'), ('can_edit_form', '=', False)]}" />
+							</group>
+							<group name="group_right" attrs="{'invisible':[('x_studio_tipo_almacn','!=','Portátil')]}">
+								<!-- Columna derecha -->
+								<field name="en_tank_10_kg" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+								<field name="en_tank_20_kg" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+								<field name="en_tank_27_kg" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+								<field name="en_tank_30_kg" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+								<field name="en_tank_45_kg" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+								<field name="en_tank_bulk" attrs="{'readonly':[('state','!=','sale'), ('can_edit_form', '=', False)]}" />
+							</group>
+
+							<group>
+								<field name="justification" attrs="{'invisible' : [('is_justification_nedeed', '=', False)] }"/>
+								<field name="st_volume_meter_default" invisible="1"/>
+							</group>
+
+							<group>
+								<field name="percent_just_flag" invisible="1"/>
+								<field name="percent_justification" attrs="{'invisible' : [('percent_just_flag', '=', False)], 'required': [('percent_just_flag', '=', True)]}"></field>
+							</group>
+
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Action -->
+		<record id="action_pos_route_config_route_config_view" model="ir.actions.act_window">
+			<field name="name">Route configuration</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">pos_route_config.route_config</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="context">{"search_default_filterby_state_date": 1}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontect_create">Route configuration</p>
+				<p>Click "Create" to add a new route configuration</p>
+			</field>
+		</record>
+
+		<!-- Search -->
+		<record id="view_pos_route_config_route_config_search" model="ir.ui.view">
+			<field name="name">view.pos.route.config.route.config.search</field>
+			<field name="model">pos_route_config.route_config</field>
+			<field name="arch" type="xml">
+				<search string="Filtrar {modelo}">
+					<field name="name" />
+					<field name="date" />
+					<field name="pos_config_id" />
+					<field name="state" />
+					<field name="employee_ids"/>
+					<!-- Filtrar por -->
+					<filter name="filterby_state_date" string="Today's Routes" domain="['|', ('state', '!=', 'finish'), ('date', '=', context_today().strftime('%Y-%m-%d'))]" 
+						help="All started route configurations and today's route configuration"/> <!-- domain="['|', ('state', '=', 'start'), ('state', '=', 'finish')]" -->
+				</search>
+			</field>
+		</record>
+
+		<!-- Menu -->
+
+	</data>
+</odoo>

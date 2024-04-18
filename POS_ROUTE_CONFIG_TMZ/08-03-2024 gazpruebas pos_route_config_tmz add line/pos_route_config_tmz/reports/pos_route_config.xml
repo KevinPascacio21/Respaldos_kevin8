@@ -1,0 +1,13 @@
+<odoo>
+    <data>        
+        <record id="report_config_route" model="ir.actions.report">
+            <field name="name">Reporte de configuración de rutas</field> 
+            <field name="model">pos_route_config_tmz.c_report</field> 
+            <field name="report_type">xlsx</field>
+            <field name="report_name">report_route_conf</field>
+            <field name="report_file">Reporte de configuración de rutas</field> 
+            <field name="binding_model_id" ref="model_pos_route_config_tmz_c_report"/> 
+            <field name="binding_type">report</field> 
+        </record>
+    </data>
+</odoo>

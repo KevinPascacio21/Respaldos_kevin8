@@ -1,0 +1,522 @@
+MODULO DE POS_ROUTE_CONFIG_TMZ:
+
+
+
+init.py:
+
+# -*- coding: utf-8 -*-
+
+from . import route_config
+from . import rpt_pos_route_config 
+
+------------------------------------------------------------
+route_config.py:
+
+
+from ast import If
+from email.policy import default
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError, UserError
+from datetime import datetime, timedelta
+from pytz import timezone
+from odoo.tools import float_round
+import logging
+_logger = logging.getLogger(__name__)
+
+
+class RC_report(models.Model): 
+    _name = 'pos_route_config_tmz.c_report'
+    _description = 'reportes'
+
+    name = fields.Char(string='Nombre ', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'))
+    company_id = fields.Many2one(comodel_name='res.company', required=True, default=lambda self: self.env.company)
+    fecha_filtro = fields.Date(string='Fecha de configuración de ruta ')
+    fecha_reporte = fields.Datetime(string='Fecha de creación ', readonly=True, default=lambda self: fields.datetime.now())#
+
+    relacion_ids = fields.Many2many(comodel_name='pos_route_config_tmz.rd',  inverse_name='data_ids', string='Relacion')
+    
+    @api.model
+    def create(self, vals):
+        vals['name'] = 'Reporte de rutas de configuración: ' + vals['fecha_filtro']
+        return super(RC_report, self).create(vals)
+
+
+
+    
+    def _get_time_zone(self):
+        res_users_obj = self.env['res.users']
+        userstz = res_users_obj.browse(self._uid).tz
+        a = 0#ggg
+        if userstz:
+            hours = timezone(userstz)
+            fmt = '%Y-%m-%d %H:%M:%S %Z%z'
+            now = datetime.now()
+            loc_dt = hours.localize(datetime(now.year, now.month, now.day,
+                                             now.hour, now.minute, now.second))
+            timezone_loc = (loc_dt.strftime(fmt))
+            diff_timezone_original = timezone_loc[-5:-2]
+            timezone_original = int(diff_timezone_original)
+            s = str(datetime.now(timezone(userstz)))
+            s = s[-6:-3]
+            timezone_present = int(s)*-1
+            a = timezone_original + ((
+                timezone_present + timezone_original)*-1)
+        return a
+    
+    def write(self, vals):
+        vals['name'] = 'Reporte de rutas de configuración: ' + vals['fecha_filtro']
+        if 'fecha_filtro' in vals:
+        # Seleccionar los registros actualizados
+            records = self.filtered(lambda r: r.id in vals.keys())
+        for record in records:
+            #Restar 7 hrs a la fecha de creacion de la ruta route_creation_date para que aparezca la hora correcta en el reporte xlsx igual que en la vista y en PTV Rutas
+            route_creation_datetime = fields.Datetime.from_string(record.route_creation_date)# Convertir route_creation_date a un objeto datetime
+            new_datetime = route_creation_datetime - timedelta(hours=7)# Restar 7 horas
+            vals['route_creation_date'] = new_datetime.strftime('%Y-%m-%d %H:%M:%S')# Actualizar el valor en vals
+
+            #Restar 7 hrs a la fecha de salida
+            departure_datetime = fields.Datetime.from_string(record.departure_date)# Convertir departure_date a un objeto datetime
+            new_departure_datetime = departure_datetime - timedelta(hours=7)# Restar 7 horas
+            vals['departure_date'] = new_departure_datetime.strftime('%Y-%m-%d %H:%M:%S')# Actualizar el valor en vals
+
+            #Restar 7 hrs a la fecha de llegada
+            arrival_datetime = fields.Datetime.from_string(record.arrival_date)# Convertir arrival_date a un objeto datetime
+            new_arrival_datetime = arrival_datetime - timedelta(hours=7)# Restar 7 horas
+            vals['arrival_date'] = new_arrival_datetime.strftime('%Y-%m-%d %H:%M:%S')# Actualizar el valor en vals
+
+        return super(RC_report, self).write(self, vals)
+    
+    
+    @api.onchange('fecha_filtro')
+    def _get_name(self): 
+        for doc in self:
+            if doc.fecha_filtro:
+
+                init_date = doc.fecha_filtro
+                out_date = doc.fecha_filtro
+                time_zone = self._get_time_zone()
+
+                 # --------------------------------------------------------- Fecha ---------------------------------------------------------
+
+                fecha_entrada = init_date.strftime("%Y-%m-%d")
+                fecha_salida = out_date.strftime("%Y-%m-%d")
+                
+                date_start = fecha_entrada + ' 00:00:00'
+                date_end = fecha_salida + ' 23:59:59' # 17:00:00 hrs del servidor 23:59:59
+
+                date_start_search = datetime.strptime(date_start, '%Y-%m-%d %H:%M:%S') + timedelta(hours=abs(time_zone))
+                date_end_search = datetime.strptime(date_end, '%Y-%m-%d %H:%M:%S') + timedelta(hours=abs(time_zone))
+                rec = self.env['pos_route_config.route_config'].search([('create_date', '>=', date_start_search), ('create_date', '<=', date_end_search), ("company_id.name", "=", doc.company_id.name)]) #search([('anno', '=', doc.fecha_filtro)]) 
+                self.relacion_ids = [(5,0,0)]
+                for res in rec:
+                    line = {}
+                    line['route_creation_date'] = res.create_date #fecha de creacion de la ruta
+                    line['departure_date'] = res.departure_date
+                    line['arrival_date'] = res.arrival_date
+                    line['name'] = res.name
+                    line['pos_config_id'] = res.pos_config_id
+                    line['st_volume_meter'] = res.st_volume_meter
+                    line['en_volume_meter'] = res.en_volume_meter
+                    line['dif_volume_meter'] = res.dif_volume_meter
+                    line['st_weight_aux'] = res.st_weight_aux
+                    line['en_weight_aux'] = res.en_weight_aux
+                    line['dif_weight'] = res.dif_weight
+                    line['st_percent'] = res.st_percent
+                    line['en_percent'] = res.en_percent
+                    line['dif_percent'] = res.dif_percent
+                    line['avg_sector'] = res.avg_sector 
+                    line['hg_avg'] = res.hg_avg         
+                    line['st_carburation'] = res.st_carburation
+                    line['en_carburation'] = res.en_carburation
+                    line['dif_carburation'] = res.dif_carburation
+                    line['st_gauge'] = res.st_gauge
+                    line['en_gauge'] = res.en_gauge
+                    line['liters_receivable'] = res.liters_receivable   
+                    line['refuel_liters'] = res.refuel_liters
+                    line['state'] = res.state
+                    for employee in res.employee_ids:
+                        line['employee_ids'] = [(4, employee.id)]
+                        #line['employee_ids'] = res.employee_ids b
+                    line['x_studio_ayudante'] = res.x_studio_ayudante
+                    line['justification'] = res.justification
+                    self.relacion_ids = [(0,0,line)]
+
+
+
+class reporte_s(models.Model): #este almacena los datos
+    _name = 'pos_route_config_tmz.rd'
+    _description = 'Almacen de datos'
+
+    data_ids = fields.Many2one(comodel_name='pos_route_config_tmz.c_report', string='Variables', readonly=True)
+    route_creation_date = fields.Datetime(string='Fecha de creación')
+    departure_date = fields.Datetime(string='Fecha de salida')
+    arrival_date = fields.Datetime(string='Fecha de llegada')
+    name = fields.Char(string='Referencia de ruta', default='Nuevo')
+    pos_config_id = fields.Many2one(comodel_name='pos.config', string='Punto de venta')
+    st_volume_meter = fields.Float(string='Litrómetro inicial')
+    en_volume_meter = fields.Float(string='Litrómetro final')
+    dif_volume_meter = fields.Float(string='Diferencia de litrómetro')
+    st_weight = fields.Float(string='Peso inicial')
+    st_weight_aux = fields.Float(string='Peso inicial Aux')
+    en_weight = fields.Float(string='Peso final')
+    en_weight_aux = fields.Float(string='Peso final Aux')
+    dif_weight = fields.Float(string='Diferencia de peso') 
+    st_percent = fields.Float(string='Porcentaje inicial')
+    en_percent = fields.Float(string='Porcentaje final')
+    dif_percent = fields.Float(string='Diferencia de porcentaje')
+    avg_sector = fields.Float(string='Promedio sector')#Promedio sector
+    hg_avg = fields.Float(string='Promedio general')#Promedio general
+    st_carburation = fields.Integer(string="Carburación inicial")
+    en_carburation = fields.Integer(string="Carburación final")   
+    dif_carburation = fields.Integer(string='Diferencia de carburación')
+    st_gauge = fields.Integer(string='Rotogauge inicial')
+    en_gauge = fields.Integer(string='Rotogauge final')
+    refuel_liters = fields.Float(string="Litros para recargar")
+    liters_receivable = fields.Float(string="Litros por cobrar")
+    state = fields.Selection(string='Estatus',
+        selection=[('new', 'Nuevo'), #izq: lo que se verá en el reporte (excel), der: lo que se mostrará en la vista al jalar los datos
+                   ('start', 'Configuración de Ruta'), 
+                   ('sale', 'Ventas'), 
+                   ('reception', 'Recepción de rutas'), 
+                   ('concil', 'Conciliación de venta'), 
+                   ('finish', 'Cierre de caja')])
+    employee_ids = fields.Many2many(comodel_name='hr.employee', string='Empleado')
+    x_studio_ayudante = fields.Many2one('hr.employee', string='Ayudante') 
+    justification = fields.Text(string='Justificación')
+
+--------------------------------------------------------------------------------------------------
+
+rpt_pos_route_config.py:
+
+
+
+
+from odoo import api, fields, models
+from datetime import datetime, timedelta #
+
+class RouteConfigReport(models.Model):
+    _name = 'report.report_route_conf' 
+    _inherit = 'report.report_xlsx.abstract' 
+    _description = 'Reporte de configuración de rutas'
+
+
+    def generate_xlsx_report(self, workbook, data, route_config):
+        for ctrl in route_config:
+            report_name = 'Reporte de configuración de rutas'
+            # One sheet by partner
+
+            #Celdas
+            sheet = workbook.add_worksheet(report_name[:31])
+            sheet.write(0, 4, report_name, workbook.add_format({'bold': True, 'align': 'center'}))
+            sheet.set_column(1, 1, 20)
+            sheet.set_column(2, 2, 25)
+            sheet.set_column(3, 3, 25)
+            sheet.set_column(4, 4, 25)
+            sheet.set_column(5, 5, 20)
+            sheet.set_column(6, 6, 25)
+            sheet.set_column(7, 7, 20)
+            sheet.set_column(8, 8, 25)
+            sheet.set_column(9, 9, 25)
+            sheet.set_column(10, 10, 25)
+            sheet.set_column(11, 11, 20)
+            sheet.set_column(12, 12, 25)
+            sheet.set_column(13, 13, 20)
+            sheet.set_column(14, 14, 25)
+            sheet.set_column(15, 15, 25)
+            sheet.set_column(16, 16, 25)
+            sheet.set_column(17, 17, 20)
+            sheet.set_column(18, 18, 25)
+            sheet.set_column(19, 19, 20)
+            sheet.set_column(20, 20, 25)
+            sheet.set_column(21, 21, 25)
+            sheet.set_column(22, 22, 25)
+            sheet.set_column(23, 23, 20)
+            sheet.set_column(24, 24, 25)
+            sheet.set_column(25, 25, 20)
+            sheet.set_column(26, 26, 25)
+            sheet.set_column(27, 27, 20)
+
+
+            title_cell = workbook.add_format({'bold': True, 'font_color': 'black', 'bg_color': '#F1FADA', 'align': 'center'})
+            format_cell = workbook.add_format({'font_color': 'black', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_Date = workbook.add_format({'font_color': 'black', 'border': True, 'border_color': '#F1FADA', 'num_format': 'dd/mm/yy      HH:MM:SS', 'align': 'center'})                                                    #HH:MM:SS', 'align': 'center'})
+            
+            #Dar formato y color a las celdas
+            format_cell_white = workbook.add_format({'font_color': 'black', 'bg_color': '#ffffff', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_orange = workbook.add_format({'font_color': 'black', 'bg_color': '#fadb62', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_grey = workbook.add_format({'font_color': 'black', 'bg_color': '#c4c4c4', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_blue = workbook.add_format({'font_color': 'black', 'bg_color': '#81c8ef', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_yellow = workbook.add_format({'font_color': 'black', 'bg_color': '#e7f177', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+            format_cell_green = workbook.add_format({'font_color': 'black', 'bg_color': '#b7f0a6', 'border': True, 'border_color': '#F1FADA', 'align': 'center'})
+
+
+
+            sheet.write(2, 2, 'Fecha de creación', title_cell)
+            sheet.write(2, 3, 'Fecha de salida', title_cell)
+            sheet.write(2, 4, 'Fecha de llegada', title_cell)
+            sheet.write(2, 5, 'Referencia de ruta', title_cell)
+            sheet.write(2, 6, 'Punto de venta', title_cell)
+            sheet.write(2, 7, 'Litrometro inicial', title_cell)
+            sheet.write(2, 8, 'Litrometro final', title_cell)
+            sheet.write(2, 9, 'Diferencia Litrometro', title_cell)
+            sheet.write(2, 10, 'Peso inicial', title_cell)
+            sheet.write(2, 11, 'Peso final', title_cell)
+            sheet.write(2, 12, 'Diferencia de Peso', title_cell)
+            sheet.write(2, 13, 'Porcentaje inicial', title_cell)
+            sheet.write(2, 14, 'Porcentaje final', title_cell)
+            sheet.write(2, 15, 'Diferencia Porcentaje', title_cell)
+            sheet.write(2, 16, 'Promedio sector', title_cell)
+            sheet.write(2, 17, 'Promedio general', title_cell)
+            sheet.write(2, 18, 'Carburación inicial', title_cell)
+            sheet.write(2, 19, 'Carburación final', title_cell)
+            sheet.write(2, 20, 'Diferencia de Carburación', title_cell)
+            sheet.write(2, 21, 'Rotogauge inicial', title_cell)
+            sheet.write(2, 22, 'Rotogauge final', title_cell)
+            sheet.write(2, 23, 'Litros por cobrar', title_cell)
+            sheet.write(2, 24, 'Litros para recargar', title_cell)
+            sheet.write(2, 25, 'Estatus', title_cell)
+            sheet.write(2, 26, 'Empleado', title_cell)
+            sheet.write(2, 27, 'Ayudante', title_cell)
+            sheet.write(2, 28, 'Justificación', title_cell)
+
+
+            row = 3
+            for line in ctrl.relacion_ids:
+              #   sheet.write(row, 2, line.route_creation_date , format_cell_Date)
+                route_creation_datetime = fields.Datetime.from_string(line.route_creation_date)#
+                new_datetime = route_creation_datetime - timedelta(hours=7)#
+                sheet.write(row, 2, new_datetime, format_cell_Date)#
+
+              #   sheet.write(row, 3, line.departure_date , format_cell_Date)
+                departure_datetime = fields.Datetime.from_string(line.departure_date)#
+                new_departure_datetime = departure_datetime - timedelta(hours=7)#
+                sheet.write(row, 3, new_departure_datetime, format_cell_Date)#
+
+              #   sheet.write(row, 4, line.arrival_date , format_cell_Date)
+                arrival_datetime = fields.Datetime.from_string(line.arrival_date)#
+                new_arrival_datetime = arrival_datetime - timedelta(hours=7)#
+                sheet.write(row, 4, new_arrival_datetime, format_cell_Date)#
+
+                sheet.write(row, 5, line.name, format_cell)
+                sheet.write(row, 6, line.pos_config_id.name, format_cell) 
+                sheet.write(row, 7, line.st_volume_meter, format_cell)
+                sheet.write(row, 8, line.en_volume_meter, format_cell)
+                sheet.write(row, 9, line.dif_volume_meter, format_cell)
+                sheet.write(row, 10, line.st_weight_aux, format_cell)
+                sheet.write(row, 11, line.en_weight_aux, format_cell)
+                sheet.write(row, 12, line.dif_weight, format_cell)
+                sheet.write(row, 13, line.st_percent, format_cell)
+                sheet.write(row, 14, line.en_percent, format_cell)
+                sheet.write(row, 15, line.dif_percent, format_cell)
+                sheet.write(row, 16, line.avg_sector , format_cell)        
+                sheet.write(row, 17, line.hg_avg, format_cell) #promedio general  
+                sheet.write(row, 18, line.st_carburation, format_cell)
+                sheet.write(row, 19, line.en_carburation, format_cell)
+                sheet.write(row, 20, line.dif_carburation, format_cell)
+                sheet.write(row, 21, line.st_gauge, format_cell)
+                sheet.write(row, 22, line.en_gauge, format_cell)
+                sheet.write(row, 23, line.liters_receivable, format_cell)
+                sheet.write(row, 24, line.refuel_liters, format_cell)
+                if line.state == "new": 
+                         sheet.write(row, 25, "Nuevo", format_cell_white)
+                elif line.state == "New":
+                       sheet.write(row, 25, "Nuevo", format_cell_white)
+                elif line.state == "start": 
+                        sheet.write(row, 25, "Configuración de ruta", format_cell_blue)
+                elif line.state == "Route Configuration":
+                       sheet.write(row, 25, "Configuración de ruta", format_cell_blue)
+                elif line.state == "sale":
+                       sheet.write(row, 25, "Ventas", format_cell_grey)
+                elif line.state == "Sales":
+                       sheet.write(row, 25, "Ventas", format_cell_grey)
+                elif line.state == "reception":
+                       sheet.write(row, 25, "Recepción de rutas", format_cell_orange)
+                elif line.state == "Route Reception":
+                       sheet.write(row, 25, "Recepción de rutas", format_cell_orange)
+                elif line.state == "concil":
+                       sheet.write(row, 25, "Conciliación de venta", format_cell_yellow)
+                elif line.state == "Sale Conciliation":
+                       sheet.write(row, 25, "Conciliación de venta", format_cell_yellow)
+                elif line.state == "finish": #finish= cierre de caja para que coincida lo que hay en el la vista del reporte y el reporte en excel
+                       sheet.write(row, 25, "Cierre de caja", format_cell_green)
+                elif line.state == "Cash Box Closed":
+                       sheet.write(row, 25, "Cierre de caja", format_cell_green)
+                sheet.write(row, 26, line.employee_ids.name if line.employee_ids else '', format_cell)
+                sheet.write(row, 27, line.x_studio_ayudante.name if line.x_studio_ayudante else '', format_cell)
+                sheet.write(row, 28, line.justification, format_cell)
+                row += 1
+
+
+
+-------------------------------------------------------------------------------
+carpeta reports>pos_route_config_xml:
+
+
+
+<odoo>
+    <data>        
+        <record id="report_config_route" model="ir.actions.report">
+            <field name="name">Reporte de configuración de rutas</field> 
+            <field name="model">pos_route_config_tmz.c_report</field> 
+            <field name="report_type">xlsx</field>
+            <field name="report_name">report_route_conf</field>
+            <field name="report_file">Reporte de configuración de rutas</field> 
+            <field name="binding_model_id" ref="model_pos_route_config_tmz_c_report"/> 
+            <field name="binding_type">report</field> 
+        </record>
+    </data>
+</odoo>
+
+-----------------------------------------------------------------------
+security>ir.model.acces.csv:
+
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_route_config_tmz_c_report,pos_route_config_tmz.c_report,model_pos_route_config_tmz_c_report,base.group_user,1,1,1,1
+access_pos_route_config_tmz_rd,pos_route_config_tmz.rd,model_pos_route_config_tmz_rd,base.group_user,1,1,1,1
+
+-------------------------------------------------------------------------
+
+security>security.xml:
+
+<odoo>
+    <data>
+        <!-- Reglas --><record model="ir.rule" id="route_config_multi_comp_rule_report">
+        <field name="name">Route Configuration multi-company</field> 
+            <field name="model_id" ref="model_pos_route_config_tmz_c_report"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+</odoo>
+
+
+------------------------------------------------------------------------------
+
+pos_route_config_view.xml:
+
+
+
+<odoo>
+  <data>
+    <record model="ir.ui.view"  id="reporte_con_form">
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="model">pos_route_config_tmz.c_report</field>
+      <field name="arch" type="xml">
+        <form string="Sabana Control">
+          <sheet>
+            <div class="oe_title">
+              <h1><field name="name" force_save="1" readonly="1"/></h1>              
+            </div>
+            <group> <!--inicio de la primera clase -->
+              <!-- Controladores: -->
+              <field name="fecha_filtro"/>                   
+            </group>   <!--fin de la primera clase-->
+            <field name="relacion_ids" widget="many2many" mode="tree" readonly="1" force_save="1"> 
+              <tree create="false" editable="false" delete="false" default_order="route_creation_date"> 
+                <field name="route_creation_date" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="departure_date" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="arrival_date" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="name" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="pos_config_id" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_volume_meter" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_volume_meter" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="dif_volume_meter" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_weight_aux" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_weight_aux" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="dif_weight" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_percent" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_percent" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="dif_percent" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="avg_sector" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="hg_avg" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_carburation" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_carburation" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="dif_carburation" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="st_gauge" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="en_gauge" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="liters_receivable" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="refuel_liters" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="state" style="pointer-events:none;" readonly="1" force_save="1" widget="badge" decoration-success="state == 'finish'" decoration-warning="state == 'reception'" decoration-info="state == 'start'" decoration-muted="state == 'sale'"/>       <!-- decoration-success="state == 'finish'" decoration-warning="state == 'reception'" decoration-primary="state == 'start'" decoration-info="state == 'concil'"/>   Agarra los valores de la izq. Por eso se colocaron los nombres en ingles -->
+                <field name="employee_ids" style="pointer-events:none;" readonly="1" force_save="1" widget="many2many_tags"/>
+                <field name="x_studio_ayudante" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="justification" style="pointer-events:none;" readonly="1" force_save="1"/>
+              </tree>
+            </field>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="c_report_list"> 
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="model">pos_route_config_tmz.c_report</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="fecha_reporte"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="c_report_action_window">
+      <field name="name">Reporte de configuración de rutas</field>
+      <field name="res_model">pos_route_config_tmz.c_report</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- menu superior -->
+    <!--nombre y icono en la barra de herramientasg -->
+    <menuitem name="Reporte de configuración de rutas" id="c_report_menu_root" action="c_report_action_window"/>
+  </data>
+</odoo>
+
+---------------------------------------------------------------------------------------------
+
+
+init.py:
+
+
+
+
+# -*- coding: utf-8 -*-
+
+from . import controllers
+from . import models
+
+
+-------------------------------------------------------------------------------------------------
+
+
+manifest.py:
+
+# -*- coding: utf-8 -*-
+{
+    'name': "pos_route_config_tmz",
+
+    'summary': """
+        Manage POS unit session""",
+
+    'description': """
+        Manage a POS unit weight and other data before opening or closing a session
+    """,
+
+    'author': "Kevin",
+    'website': "http://www.yourcompany.com",
+
+    # Categories can be used to filter modules in modules listing
+    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
+    # for the full list
+    'category': 'Uncategorized',
+    'version': '0.1',
+
+    # any module necessary for this one to work correctly
+    'depends': ['base', 'report_xlsx'],
+
+    # always loaded
+    'data': [
+        'security/ir.model.access.csv',
+        'security/security.xml',
+        'reports/pos_route_config.xml',
+        'views/pos_route_config_view.xml',
+    ],
+    # only loaded in demonstration mode
+    'demo': [
+        'demo/demo.xml',
+    ],
+}

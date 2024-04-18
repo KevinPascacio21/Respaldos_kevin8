@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- pos.session inherit form view -->
+        <record id="view_pos_session_form_inherit_gaspar" model="ir.ui.view">
+            <field name="name">pos.session.inherit.view.form</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_pos_session_validate']" position="replace">
+                    <button id="validate_opened" name="action_pos_session_closing_control_recalculate_stock" type="object" string="Close Session &amp; Post Entries" states="closing_control" class="oe_highlight"/>
+                </xpath>            
+            </field>
+        </record>
+
+        <!-- pos.session inherit form view -->
+        <record id="view_pos_session_form" model="ir.ui.view">
+            <field name="name">pos.session.inherit.view.form</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <xpath expr="//button[@name='action_stock_picking']" position="attributes">
+                    <!-- Add your fields here -->
+                    <attribute name="attrs">{}</attribute>
+                    <attribute name="invisible">{True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='rescue']" position="after">
+                    <!-- Add your fields here -->
+                    <field name="gaspar_orders_cons" invisible="1"/>
+                </xpath>
+                <xpath expr="//button[@name='action_view_order']" position="replace">
+                    <button string="Route Config" name="action_view_route_config" class="oe_stat_button" 
+                        icon="fa-road" type="object"/>
+                    <button name="action_view_order" class="oe_stat_button" icon="fa-shopping-basket" 
+                        type="object" attrs="{'invisible': [('gaspar_orders_cons', '=', True)]}">
+                        <field name="order_count" widget="statinfo" string="Orders"/>
+                    </button>
+                    <button name="action_view_order" class="oe_stat_button" icon="fa-check" 
+                        type="object" attrs="{'invisible': [('gaspar_orders_cons', '=', False)]}">
+                        <field name="order_count" widget="statinfo" string="Orders"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- pos.session inherit form view -->
+        <record id="view_pos_session_form_inherit_kilos" model="ir.ui.view">
+            <field name="name">faltante session view form</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='stop_at']" position="after">
+                <field name="total_kg"/>
+            </xpath>           
+            </field>
+        </record> 
+    </data>
+</odoo>

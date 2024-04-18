@@ -1,0 +1,84 @@
+<odoo>
+    <data>
+
+        <template id="route_config_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page" style="font-family: Arial, Helvetica, sans-serif">
+                        <img style="width: 200px; margin: auto;"
+                            t-attf-src="data:image/*;base64,{{o.company_id.logo}}"
+                            t-att-alt="o.company_id.name"
+                            />
+                        <h2 t-field="o.company_id.short_name"></h2>
+                        <p>PdV: <span t-field="o.pos_config_id.name"/>
+                        </p>
+                        <p><h3 t-field="o.name"></h3>
+                        </p>
+                        <p>Salida: <span t-field="o.departure_date"/>
+                        </p>
+                        <p>Llegada: <span t-field="o.arrival_date"/>
+                        </p>
+                        <p>______________________________</p>
+                        <t t-foreach="o.employee_ids" t-as="e">
+                            <p><span t-field="e.name"/></p>
+                        </t>
+                        <p>______________________________</p>
+                        <div class="" t-if="o.x_studio_tipo_almacn != 'Portátil'">
+                            <p>
+                                Litrómetro Salida: <span t-field="o.st_volume_meter"/><br/>
+                                % Salida: <span t-field="o.st_percent"/><br/>
+                                Peso Salida: <span t-field="o.st_weight"/><br/>                         
+                                Carb. Salida: <span t-field="o.st_carburation"/><br/>
+                                Autoriza: <span t-field="o.departure_approved_by_uid"/>
+                            <br/>______________________________
+                            </p>
+                            <p t-if="o.state in ('reception', 'concil', 'finish')">
+                                Litrómetro Entrada: <span t-field="o.en_volume_meter"/><br/>
+                                % Entrada: <span t-field="o.en_percent"/><br/>
+                                Peso Entrada: <span t-field="o.en_weight"/><br/>
+                                Carb. Entrada: <span t-field="o.en_carburation"/><br/>
+                                Autoriza: <span t-field="o.arrival_approved_by_uid"/>
+                            <br/>______________________________
+                            </p>
+                            <p t-if="o.state == 'finish'">
+                                Dif. Litrómetro: <span t-field="o.dif_volume_meter"/><br/>   
+                                Dif. % Entrada: <span t-field="o.dif_percent"/> / <span t-field="o.dif_percent_volume"/>(lts)<br/>
+                                Dif. Peso: <span t-field="o.dif_weight"/> / <span t-field="o.dif_weight_volume"/>(lts)<br/>
+                                Dif. Carb(lts): <span t-field="o.dif_carburation"/><br/>
+                            <br/>______________________________
+                            </p>
+
+                            <p t-if="o.rebombeo == False">
+                                Recargar: <span t-field="o.refuel_liters"/><br/>
+                                <span t-field="o.refuel_state"></span>
+                            </p>
+                            <p t-if="o.rebombeo == True">
+                                ¡REBOMBEO NECESARIO!
+                            </p>
+                        </div>
+                        <div t-if="o.x_studio_tipo_almacn == 'Portátil'">
+                            <p >
+                                Tanques 10 kg inicial: <span t-field="o.st_tank_10_kg"/><br/>
+                                Tanques 20 kg inicial: <span t-field="o.st_tank_20_kg"/><br/>
+                                Tanques 27 kg inicial: <span t-field="o.st_tank_27_kg"/><br/>                         
+                                Tanques 30 kg inicial: <span t-field="o.st_tank_30_kg"/><br/>
+                                Tanques 45 kg inicial: <span t-field="o.st_tank_45_kg"/><br/>
+                                A granel inicial: <span t-field="o.st_tank_bulk"/>
+                            <br/>______________________________
+                            </p>
+                            <p t-if="o.state in ('reception', 'concil', 'finish')">
+                                Tanques 10 kg final: <span t-field="o.en_tank_10_kg"/><br/>
+                                Tanques 20 kg final: <span t-field="o.en_tank_20_kg"/><br/>
+                                Tanques 27 kg final: <span t-field="o.en_tank_27_kg"/><br/>                         
+                                Tanques 30 kg final: <span t-field="o.en_tank_30_kg"/><br/>
+                                Tanques 45 kg final: <span t-field="o.en_tank_45_kg"/><br/>
+                                A granel inicial: <span t-field="o.en_tank_bulk"/>
+                            <br/>______________________________
+                            </p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>        
+    </data>
+</odoo>

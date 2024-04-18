@@ -1,0 +1,49 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view"  id="reporte_con_form">
+      <field name="name">Reporte de descuento integrado</field>
+      <field name="model">r_descuento_integrado.cr</field>
+      <field name="arch" type="xml">
+        <form string="Sabana Control">
+          <sheet>
+            <div class="oe_title">
+              <h1><field name="name" force_save="1" readonly="1"/></h1>              
+            </div>
+            <group> <!--inicio de la primera clase -->
+              <!-- Controladores: -->
+              <field name="fecha_inicio"/>
+              <field name="fecha_final"/>                   
+            </group>   <!--fin de la primera clase-->
+            <field name="relacion_ids" widget="many2many" mode="tree" readonly="1" force_save="1"> 
+              <tree create="false" editable="false" delete="false">
+                <field name="name" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="partner_id" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <field name="invoice_date" style="pointer-events:none;" readonly="1" force_save="1"/>
+                <!-- <field name="total_cash_discount" style="pointer-events:none;" readonly="1" force_save="1"/> -->
+              </tree>
+            </field>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="cr_list"> 
+      <field name="name">Reporte de descuento integrado</field>
+      <field name="model">r_descuento_integrado.cr</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="fecha_inicio"/>
+          <field name="fecha_final"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="cr_action_window">
+      <field name="name">Reporte de descuento integrados</field>
+      <field name="res_model">r_descuento_integrado.cr</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- menu superior -->
+    <!--nombre y icono en la barra de herramientasg -->
+    <menuitem name="Reporte de descuento integrado" id="cr_menu_root" action="cr_action_window"/>
+  </data>
+</odoo>
